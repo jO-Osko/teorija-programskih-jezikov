@@ -1,0 +1,1865 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Praksa programskih jezikov &#8212; Teorija programskih jezikov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"intsym": ["\\underline{#1}", 1], "kwd": ["\\mathbf{#1}", 1], "kwdpre": ["\\kwd{#1}\\;", 1], "kwdmid": ["\\;\\kwd{#1}\\;", 1], "kwdpost": ["\\;\\kwd{#1}", 1], "true": "\\kwd{true}", "false": "\\kwd{false}", "ifthenelse": ["\\kwdpre{if} #1 \\kwdmid{then} #2 \\kwdmid{else} #3", 3], "whiledo": ["\\kwdpre{while} #1 \\kwdmid{do} #2", 2], "skip": "\\kwd{skip}", "ttt": "t\\!t", "fff": "f\\!\\!f", "infer": ["\\displaystyle{\\frac{#1}{#2}}", 2], "boolty": "\\kwd{bool}", "intty": "\\kwd{int}", "eqs": "\\mathcal{E}", "ctxt": "\\mathcal{C}", "itp": ["[\\![ #1 ]\\!]", 1], "return": "\\kwdpre{return}", "letin": ["\\kwdpre{let} #1 \\kwdmid{in}", 1], "bind": "\\mathop{>\\!\\!\\!>\\!\\!\\!=}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01-praksa-programskih-jezikov';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Indukcija" href="03-indukcija.html" />
+    <link rel="prev" title="Teorija programskih jezikov" href="00-uvod.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Teorija programskih jezikov</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Teorija programskih jezikov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Osnove</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Praksa programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-indukcija.html">Indukcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Metateorija</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-metateorija-programskih-jezikov.html">Metateorija programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-lambda-racun.html">λ-račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-tipi.html">Tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-izpeljava-tipov.html">Izpeljava tipov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Denotacijska semantika</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-denotacijska-semantika.html">Denotacijska semantika</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-domene.html">Domene</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Učinki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08-racunski-ucinki.html">Računski učinki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-monade.html">Monade</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/matijapretnar/teorija-programskih-jezikov/zapiski?urlpath=tree/01-praksa-programskih-jezikov.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/01-praksa-programskih-jezikov.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/01-praksa-programskih-jezikov.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Praksa programskih jezikov</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa-jezika">Sintaksa jezika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konkretna-sintaksa">Konkretna sintaksa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstraktna-sintaksa">Abstraktna sintaksa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-jezika">Implementacija jezika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-abstraktne-sintakse">Implementacija abstraktne sintakse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-izvajanja">Implementacija izvajanja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-razclenjevalnika">Implementacija razčlenjevalnika</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-razclenjevalnikov-a-parser">Tip razčlenjevalnikov <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">parser</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-razclenjevalniki">Osnovni razčlenjevalniki</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-kombinatorji">Osnovni kombinatorji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#razclenjevalniki-za-imp">Razčlenjevalniki za IMP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="praksa-programskih-jezikov">
+<h1>Praksa programskih jezikov<a class="headerlink" href="#praksa-programskih-jezikov" title="Permalink to this heading">#</a></h1>
+<p>Da lahko začnemo raziskovati lastnosti programskih jezikov, potrebujemo primer takega jezika. To bo enostaven ukazni (oz. imperativni) programski jezik IMP, ki podpira aritmetične izraze (cela števila, spremenljivke, aritmetične operacije), logične izraze (logični konstanti ter primerjave aritmetičnih izrazov) ter ukaze (pogojne stavke, zanke, …).</p>
+<section id="sintaksa-jezika">
+<h2>Sintaksa jezika<a class="headerlink" href="#sintaksa-jezika" title="Permalink to this heading">#</a></h2>
+<p>Prva stvar, ki jo moramo podati v definiciji programskega jezika, je njegova sintaksa - torej zapis vseh izrazov, ki jih jezik omogoča. Ločujemo med <em>konkretno sintakso</em>, ki definira zaporedja znakov, ki predstavljajo veljavne programe, ter <em>abstraktno sintakso</em>, ki možne izraze jezika predstavi z drevesno strukturo. Na primer, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">(2</span> <span class="pre">*</span> <span class="pre">3)</span></code> in <code class="docutils literal notranslate"><span class="pre">1+2*3</span></code> sta različna niza konkretne sintakse, ki oba predstavljata izraz abstraktne sintakse, predstavljen z drevesom</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  +
+ / \
+1   *
+   / \
+  2   3
+</pre></div>
+</div>
+<p>ki ga na krajše pišemo kar kot <span class="math notranslate nohighlight">\(1 + (2 * 3)\)</span>, pri čemer matematična pisava nakazuje, da nas podrobnosti, kot so presledki, ne zanimajo.</p>
+<section id="konkretna-sintaksa">
+<h3>Konkretna sintaksa<a class="headerlink" href="#konkretna-sintaksa" title="Permalink to this heading">#</a></h3>
+<p>Konkretno sintakso običajno podajamo v <a class="reference external" href="https://en.m.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus-Naurovi obliki (BNF)</a>. Ker mora konkretno sintakso razumeti tudi računalnik, v njej upoštevamo tudi presledke, zamike, oklepaje, komentarje, …  Ta je sestavljena iz pravil, ki povedo, kakšne vrste simbolov lahko nastopajo v jeziku. Pravilo, ki podaja sintakso določenega simbola je oblike</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;simbol&gt; ::= moznost1 | moznost2 | ...
+</pre></div>
+</div>
+<p>kjer je vsaka izmed možnosti sestavljena iz enega ali več nizov ali drugih simbolov. Na primer, simbol za števko <code class="docutils literal notranslate"><span class="pre">&lt;digit&gt;</span></code> je lahko kateri koli izmed nizov <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code>, …, <code class="docutils literal notranslate"><span class="pre">&quot;9&quot;</span></code>, številka pa je sestavljena iz ene ali več števk ter morebitnega predznaka:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;digit&gt; ::= &quot;0&quot; | &quot;1&quot; | ... | &quot;9&quot;
+&lt;digits&gt; ::= &quot;&quot; | &lt;digit&gt; &lt;digits&gt;
+&lt;integer&gt; ::= &lt;digits&gt; | &quot;-&quot; &lt;digits&gt;
+</pre></div>
+</div>
+<p>Za programski jezik IMP bo konkretna sintaksa</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;space&gt; ::= &quot; &quot; | &quot;\n&quot; | &quot;\t&quot; | &quot;\r&quot;
+&lt;spaces&gt; ::= &quot;&quot; | &lt;spaces1&gt;
+&lt;spaces1&gt; ::= &lt;space&gt; &lt;spaces&gt;
+
+&lt;alpha&gt; ::= &quot;a&quot; | &quot;b&quot; | ... | &quot;z&quot;
+&lt;alphanum&gt; ::= &lt;alpha&gt; | &lt;digit&gt;
+&lt;alphanums&gt; ::= &quot;&quot; | &lt;alphanum&gt; &lt;alphanums&gt;
+&lt;ident&gt; ::= &lt;alpha&gt; &lt;alhpanums&gt;
+&lt;location&gt; ::= &quot;#&quot; &lt;ident&gt;
+
+&lt;exp&gt; ::= &lt;atomic_exp&gt; &lt;spaces&gt; &quot;+&quot; &lt;spaces&gt; &lt;atomic_exp&gt;
+       |  &lt;atomic_exp&gt; &lt;spaces&gt; &quot;-&quot; &lt;spaces&gt; &lt;atomic_exp&gt;
+       |  &lt;atomic_exp&gt; &lt;spaces&gt; &quot;*&quot; &lt;spaces&gt; &lt;atomic_exp&gt;
+       |  &lt;atomic_exp&gt;
+&lt;atomic_exp&gt; ::= &lt;location&gt;
+              |  &lt;integer&gt;
+              |  &quot;(&quot; &lt;spaces&gt; &lt;exp&gt; &lt;spaces&gt; &quot;)&quot;
+&lt;bexp&gt; ::= &quot;true&quot;
+        |  &quot;false&quot;
+        |  &lt;exp&gt; &lt;spaces&gt; &quot;=&quot; &lt;spaces&gt; &lt;exp&gt;
+        |  &lt;exp&gt; &lt;spaces&gt; &quot;&lt;&quot; &lt;spaces&gt; &lt;exp&gt;
+        |  &lt;exp&gt; &lt;spaces&gt; &quot;&gt;&quot; &lt;spaces&gt; &lt;exp&gt;
+&lt;cmd&gt; ::= &quot;IF&quot; &lt;spaces1&gt; &lt;bexp&gt; &lt;spaces1&gt; &quot;THEN&quot; &lt;spaces1&gt; &lt;cmd&gt; &lt;spaces1&gt; &quot;ELSE&quot; &lt;spaces1&gt; &lt;cmd&gt;
+       |  &quot;WHILE&quot; &lt;spaces1&gt; &lt;bexp&gt; &lt;spaces1&gt; &quot;DO&quot; &lt;spaces1&gt; &lt;cmd&gt;
+       |  &lt;atomic_cmd&gt; &lt;spaces&gt; &quot;;&quot; &lt;spaces&gt; &lt;cmd&gt;
+&lt;atomic_cmd&gt; ::= &lt;location&gt; &lt;spaces&gt; &quot;:=&quot; &lt;spaces&gt; &lt;exp&gt;
+              |  &quot;SKIP&quot;
+              |  &quot;(&quot; &lt;spaces&gt; &lt;cmd&gt; &lt;spaces&gt; &quot;)&quot;
+</pre></div>
+</div>
+<p>Kaj predstavljajo zgoraj omenjeni simboli, si bomo ogledali pri abstraktni sintaksi jezika IMP, za idejo pa lahko vseeno podamo primer veljavnega programa v konkretni sintaksi:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#fact := 1;
+WHILE #m &gt; 0 DO (
+    #fact := #fact * #m;
+    #m := #m - 1
+)
+</pre></div>
+</div>
+<p>Videti je, da program v pomnilniško lokacijo <code class="docutils literal notranslate"><span class="pre">#fact</span></code> shrani fakulteto števila, shranjenega v <code class="docutils literal notranslate"><span class="pre">#m</span></code>, vendar tega ne vemo, dokler ne podamo semantike jezika.</p>
+</section>
+<section id="abstraktna-sintaksa">
+<h3>Abstraktna sintaksa<a class="headerlink" href="#abstraktna-sintaksa" title="Permalink to this heading">#</a></h3>
+<p>Kot smo že videli, v abstraktni sintaksi možne izraze predstavimo z drevesi, katerih otroci predstavljajo njihove podizraze. Zaradi krajšega zapisa pa tudi abstraktno sintakso podamo v zapisu, podobnemu BNF, pri čemer nas podrobnosti, kot so oklepaji ali točen zapis spremenljivk in števil ne zanima.  Tako bomo predpostavili, da <span class="math notranslate nohighlight">\(n\)</span> predstavlja poljubno celo število, <span class="math notranslate nohighlight">\(\ell\)</span> pa poljubno pomnilniško lokacijo.</p>
+<p>Kot smo že omenili, je jezik IMP sestavljen iz aritmetičnih izrazov, ki jih bomo označevali s spremenljivko <span class="math notranslate nohighlight">\(e\)</span>, logičnih izrazov, ki jih bomo označevali z <span class="math notranslate nohighlight">\(b\)</span>, ter ukazov, ki jih bomo označevali s <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+    \text{aritmetični izraz } e &amp;::=
+      \ell \mid
+      \intsym{n} \mid
+      e_1 + e_2 \mid
+      e_1 - e_2 \mid
+      e_1 * e_2 \\
+    \text{logični izraz } b &amp;::=
+      \true \mid
+      \false \mid
+      e_1 = e_2 \mid
+      e_1 &lt; e_2 \mid
+      e_1 &gt; e_2 \\
+    \text{ukaz } c &amp;::=
+      \ifthenelse{b}{c_1}{c_2} \mid
+      \whiledo{b}{c} \mid
+      c_1 ; c_2 \mid
+      \ell := e \mid
+      \skip
+  \end{aligned}
+\end{split}\]</div>
+<p>Oglejmo si vse veljavne dele jezika, pri čemer bomo za vsakega neformalno povedali, kaj predstavlja. Aritmetični izrazi so sestavljeni iz branja vrednosti pomnilniških lokacij, celoštevilskih konstant (ki jih podčrtamo, da jih ločimo od celih števil) ter aritmetičnih operacij, logični izrazi pa so sestavljeni iz logičnih konstant ter primerjav. Ukazi so bolj zanimivi:</p>
+<ul class="simple">
+<li><p>pogojni ukaz, ki izvede <span class="math notranslate nohighlight">\(c_1\)</span>, kadar <span class="math notranslate nohighlight">\(b\)</span> predstavlja resnično logično vrednost, oziroma <span class="math notranslate nohighlight">\(c_2\)</span>, kadar <span class="math notranslate nohighlight">\(b\)</span> predstavlja neresnično logično vrednost;</p></li>
+<li><p>zanka <code class="docutils literal notranslate"><span class="pre">while</span></code> izvaja ukaz <span class="math notranslate nohighlight">\(c\)</span>, dokler <span class="math notranslate nohighlight">\(b\)</span> predstavlja resnično logično vrednost;</p></li>
+<li><p>zaporedno izvajanje najprej izvede <span class="math notranslate nohighlight">\(c_1\)</span> - ko (če) se ta konča, izvede še <span class="math notranslate nohighlight">\(c_2\)</span>;</p></li>
+<li><p>prirejanje izračuna aritmetični izraz <span class="math notranslate nohighlight">\(e\)</span> ter njegovo vrednost zapiše v pomnilniško lokacijo <span class="math notranslate nohighlight">\(\ell\)</span>;</p></li>
+<li><p>zadnji ukaz ne naredi ničesar, uporabimo pa ga na primer takrat, kadar v pogojnem stavku želimo nekaj storiti le v eni izmed vej.</p></li>
+</ul>
+<p>Zgornji program bi v abstraktni sintaksi lahko predstavili z ukazom</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+    &amp;\mathsf{fact} := \intsym{1}; \\
+    &amp;\whiledo{\mathsf{m} &gt; \intsym{0}}{} \\
+    &amp;\quad \mathsf{fact} := \mathsf{fact} * \mathsf{m}; \\
+    &amp;\quad \mathsf{m} := \mathsf{m} - \intsym{1}
+  \end{aligned}
+\end{split}\]</div>
+</section>
+</section>
+<section id="implementacija-jezika">
+<h2>Implementacija jezika<a class="headerlink" href="#implementacija-jezika" title="Permalink to this heading">#</a></h2>
+<p>Običajno bi po sintaksi jezika formalno podali še njegovo semantiko, torej pomen posameznih delov. Ker za to še nimamo ustreznih matematičnih orodij, bomo ravnali podobno kot pri večini programskih jezikov: napisali bomo implementacijo, torej program, ki prebere ukaze, zapisane v konkretni sintaksi, ter jih na nek (po vsej sreči smiselen) način izvede. Nato pa bomo proglasili, da je pomen programa v IMPu tisto, kar implementacija z njim naredi. Implementacijo bomo napisali v programskem jeziku <a class="reference external" href="https://ocaml.org">OCaml</a>, ki je eden najprikladnejših jezikov za implementacije programskih jezikov. Končnica <code class="docutils literal notranslate"><span class="pre">ML</span></code> namreč pomeni <em>meta-language</em> oziroma metajezik, torej jezik za opis jezikov.</p>
+<section id="implementacija-abstraktne-sintakse">
+<h3>Implementacija abstraktne sintakse<a class="headerlink" href="#implementacija-abstraktne-sintakse" title="Permalink to this heading">#</a></h3>
+<p>Sintakso, ki je sestavljena iz treh vrst izrazov, bomo predstavili s tremi induktivnimi tipi. Pomnilniške lokacije bomo predstavili kar z nizi, vendar jih bomo zaradi lažjega razločevanja ovili s konstruktorjem.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">location</span> <span class="o">=</span> <span class="nc">Location</span> <span class="k">of</span> <span class="kt">string</span>
+
+<span class="k">type</span> <span class="n">exp</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Lookup</span> <span class="k">of</span> <span class="n">location</span>
+  <span class="o">|</span> <span class="nc">Int</span> <span class="k">of</span> <span class="kt">int</span>
+  <span class="o">|</span> <span class="nc">Plus</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+  <span class="o">|</span> <span class="nc">Minus</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+  <span class="o">|</span> <span class="nc">Times</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+
+<span class="k">type</span> <span class="n">bexp</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">Bool</span> <span class="k">of</span> <span class="kt">bool</span>
+  <span class="o">|</span> <span class="nc">Equal</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+  <span class="o">|</span> <span class="nc">Less</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+  <span class="o">|</span> <span class="nc">Greater</span> <span class="k">of</span> <span class="n">exp</span> <span class="o">*</span> <span class="n">exp</span>
+
+<span class="k">type</span> <span class="n">cmd</span> <span class="o">=</span>
+  <span class="o">|</span> <span class="nc">IfThenElse</span> <span class="k">of</span> <span class="n">bexp</span> <span class="o">*</span> <span class="n">cmd</span> <span class="o">*</span> <span class="n">cmd</span>
+  <span class="o">|</span> <span class="nc">WhileDo</span> <span class="k">of</span> <span class="n">bexp</span> <span class="o">*</span> <span class="n">cmd</span>
+  <span class="o">|</span> <span class="nc">Seq</span> <span class="k">of</span> <span class="n">cmd</span> <span class="o">*</span> <span class="n">cmd</span>
+  <span class="o">|</span> <span class="nc">Assign</span> <span class="k">of</span> <span class="n">location</span> <span class="o">*</span> <span class="n">exp</span>
+  <span class="o">|</span> <span class="nc">Skip</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na primer, aritmetična izraza <span class="math notranslate nohighlight">\(e_1 = (\intsym{6} * \intsym{7})\)</span> in <span class="math notranslate nohighlight">\(e_2 = (\mathsf{m} - \intsym{1})\)</span> bi predstavili z</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">exp1</span> <span class="o">=</span> <span class="nc">Times</span> <span class="o">(</span><span class="nc">Int</span> <span class="mi">6</span><span class="o">,</span> <span class="nc">Int</span> <span class="mi">7</span><span class="o">)</span>
+<span class="k">let</span> <span class="n">exp2</span> <span class="o">=</span> <span class="nc">Minus</span> <span class="o">(</span><span class="nc">Lookup</span> <span class="o">(</span><span class="nc">Location</span> <span class="s2">&quot;m&quot;</span><span class="o">),</span> <span class="nc">Int</span> <span class="mi">1</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val exp1 : exp = Times (Int 6, Int 7)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val exp2 : exp = Minus (Lookup (Location &quot;m&quot;), Int 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>logični izraz <span class="math notranslate nohighlight">\(b = (\mathsf{m} &gt; \intsym{0})\)</span> z</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">bexp</span> <span class="o">=</span> <span class="nc">Greater</span> <span class="o">(</span><span class="nc">Lookup</span> <span class="o">(</span><span class="nc">Location</span> <span class="s2">&quot;m&quot;</span><span class="o">),</span> <span class="nc">Int</span> <span class="mi">0</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val bexp : bexp = Greater (Lookup (Location &quot;m&quot;), Int 0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>ukaza <span class="math notranslate nohighlight">\(c_1 = (\mathsf{m} := e_2)\)</span> in <span class="math notranslate nohighlight">\(c_2 = (\whiledo{b}{c_1})\)</span> pa z</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">cmd1</span> <span class="o">=</span> <span class="nc">Assign</span> <span class="o">(</span><span class="nc">Location</span> <span class="s2">&quot;m&quot;</span><span class="o">,</span> <span class="n">exp2</span><span class="o">)</span>
+<span class="k">let</span> <span class="n">cmd2</span> <span class="o">=</span> <span class="nc">WhileDo</span> <span class="o">(</span><span class="n">bexp</span><span class="o">,</span> <span class="n">cmd1</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cmd1 : cmd = Assign (Location &quot;m&quot;, Minus (Lookup (Location &quot;m&quot;), Int 1))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cmd2 : cmd =
+  WhileDo (Greater (Lookup (Location &quot;m&quot;), Int 0),
+   Assign (Location &quot;m&quot;, Minus (Lookup (Location &quot;m&quot;), Int 1)))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="implementacija-izvajanja">
+<h3>Implementacija izvajanja<a class="headerlink" href="#implementacija-izvajanja" title="Permalink to this heading">#</a></h3>
+<p>Pomen bomo najprej določili aritmetičnim izrazom, ki naj bi predstavljali cela števila. Ker izrazi lahko vsebujejo pomnilniške lokacije, mora funkcija za evalvacijo poleg izraza sprejeti tudi trenutno stanje pomnilnika, ki ga bomo predstavili kar s seznamom parov, ki danim lokacijam pripiše cela števila, na primer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">st1</span> <span class="o">=</span> <span class="o">[(</span><span class="nc">Location</span> <span class="s2">&quot;m&quot;</span><span class="o">,</span> <span class="mi">10</span><span class="o">);</span> <span class="o">(</span><span class="nc">Location</span> <span class="s2">&quot;n&quot;</span><span class="o">,</span> <span class="mi">0</span><span class="o">)]</span>
+<span class="k">let</span> <span class="n">st2</span> <span class="o">=</span> <span class="o">[(</span><span class="nc">Location</span> <span class="s2">&quot;m&quot;</span><span class="o">,</span> <span class="mi">5</span><span class="o">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val st1 : (location * int) list = [(Location &quot;m&quot;, 10); (Location &quot;n&quot;, 0)]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val st2 : (location * int) list = [(Location &quot;m&quot;, 5)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Lookup</span> <span class="n">l</span> <span class="o">-&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">assoc</span> <span class="n">l</span> <span class="n">st</span>
+  <span class="o">|</span> <span class="nc">Int</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span>
+  <span class="o">|</span> <span class="nc">Plus</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">+</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+  <span class="o">|</span> <span class="nc">Minus</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">-</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+  <span class="o">|</span> <span class="nc">Times</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">*</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val eval_exp : (location * int) list -&gt; exp -&gt; int = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tako na primer velja</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_exp</span> <span class="bp">[]</span> <span class="n">exp1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 42
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_exp</span> <span class="n">st1</span> <span class="n">exp2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 9
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_exp</span> <span class="n">st2</span> <span class="n">exp2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : int = 4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno lahko definiramo funkcijo za evalvacijo logičnih izrazov, ki sprejme stanje in logični izraz ter vrne logično vrednost:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">eval_bexp</span> <span class="n">st</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">Bool</span> <span class="n">b</span> <span class="o">-&gt;</span> <span class="n">b</span>
+  <span class="o">|</span> <span class="nc">Equal</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+  <span class="o">|</span> <span class="nc">Less</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">&lt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+  <span class="o">|</span> <span class="nc">Greater</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e1</span> <span class="o">&gt;</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val eval_bexp : (location * int) list -&gt; bexp -&gt; bool = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_bexp</span> <span class="n">st1</span> <span class="n">bexp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : bool = true
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_bexp</span> <span class="n">st2</span> <span class="n">bexp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : bool = true
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nazadnje definirajmo še funkcijo za evalvacijo ukazov. Funkcija sprejme stanje in ukaz, vrne pa končno vrednost stanja po izvršenem ukazu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">eval_cmd</span> <span class="n">st</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="nc">IfThenElse</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">if</span> <span class="n">eval_bexp</span> <span class="n">st</span> <span class="n">b</span> <span class="k">then</span> <span class="n">eval_cmd</span> <span class="n">st</span> <span class="n">c1</span> <span class="k">else</span> <span class="n">eval_cmd</span> <span class="n">st</span> <span class="n">c2</span>
+  <span class="o">|</span> <span class="nc">WhileDo</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="c">(* eval_cmd st (IfThenElse (b, Seq (c, WhileDo (b, c)), Skip)) *)</span>
+      <span class="k">if</span> <span class="n">eval_bexp</span> <span class="n">st</span> <span class="n">b</span> <span class="k">then</span>
+        <span class="k">let</span> <span class="n">st&#39;</span> <span class="o">=</span> <span class="n">eval_cmd</span> <span class="n">st</span> <span class="n">c</span> <span class="k">in</span>
+        <span class="n">eval_cmd</span> <span class="n">st&#39;</span> <span class="o">(</span><span class="nc">WhileDo</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">))</span>
+      <span class="k">else</span> <span class="n">st</span>
+  <span class="o">|</span> <span class="nc">Seq</span> <span class="o">(</span><span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">let</span> <span class="n">st&#39;</span> <span class="o">=</span> <span class="n">eval_cmd</span> <span class="n">st</span> <span class="n">c1</span> <span class="k">in</span>
+      <span class="n">eval_cmd</span> <span class="n">st&#39;</span> <span class="n">c2</span>
+  <span class="o">|</span> <span class="nc">Assign</span> <span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">e</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">eval_exp</span> <span class="n">st</span> <span class="n">e</span><span class="o">)</span> <span class="o">::</span> <span class="nn">List</span><span class="p">.</span><span class="n">remove_assoc</span> <span class="n">l</span> <span class="n">st</span>
+  <span class="o">|</span> <span class="nc">Skip</span> <span class="o">-&gt;</span> <span class="n">st</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val eval_cmd : (location * int) list -&gt; cmd -&gt; (location * int) list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_cmd</span> <span class="n">st1</span> <span class="n">cmd1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * int) list = [(Location &quot;m&quot;, 9); (Location &quot;n&quot;, 0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_cmd</span> <span class="n">st2</span> <span class="n">cmd1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * int) list = [(Location &quot;m&quot;, 4)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_cmd</span> <span class="n">st1</span> <span class="n">cmd2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * int) list = [(Location &quot;m&quot;, 0); (Location &quot;n&quot;, 0)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">eval_cmd</span> <span class="n">st2</span> <span class="n">cmd2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * int) list = [(Location &quot;m&quot;, 0)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="implementacija-razclenjevalnika">
+<h3>Implementacija razčlenjevalnika<a class="headerlink" href="#implementacija-razclenjevalnika" title="Permalink to this heading">#</a></h3>
+<p>Razčlenjevalnikov običajno ne pišemo direktno, temveč se poslužimo posebnih orodij, ki sprejmejo definicijo jezika v zapisu podobnem BNF, ter iz nje samodejno ustvarijo program. V primeru OCamla sta taka programa <a class="reference external" href="https://v2.ocaml.org/manual/lexyacc.html"><code class="docutils literal notranslate"><span class="pre">ocamlyacc</span></code></a> in njegova naprednejša različica <a class="reference external" href="http://gallium.inria.fr/~fpottier/menhir/">Menhir</a>. Prav tako je sestavni del razčlenjevalnika <em>lekser</em>, ki zaporedje znakov najprej pretvori v zaporedje <em>leksemov</em>, kjer so zaporedne števke že združene v števila, ključne besede nadomeščene s posebnimi simboli, presledki in komentarji pa odstranjeni.</p>
+<p>Mi pa bomo zato, da bomo ostali znotraj enega orodja in zraven ponovili še malo funkcijskega programiranja, ubrali bolj neposredno pot in uporabili <a class="reference external" href="https://en.wikipedia.org/wiki/Parser_combinator">kombinatorje razčlenjevalnikov</a>. Vsak razčlenjevalnik bo sestavljen iz manjših razčlenjevalnikov, od katerih bo vsak predelal del besedila. Poglejmo najprej, kakšne oblike bodo.</p>
+<section id="tip-razclenjevalnikov-a-parser">
+<h4>Tip razčlenjevalnikov <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">parser</span></code><a class="headerlink" href="#tip-razclenjevalnikov-a-parser" title="Permalink to this heading">#</a></h4>
+<p>Recimo, da želimo razčlenjevalnik za cela števila. Začnimo z željo po funkciji <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code>, ki vzame vhodni niz ter vrne prebrano število, na primer iz niza <code class="docutils literal notranslate"><span class="pre">&quot;42&quot;</span></code> dobimo število <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p>
+<p>Ker vsak niz ne bo predstavljal števila, moramo najprej popraviti ti rezultata, da dobimo <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">option</span></code>. Tako bomo iz niza <code class="docutils literal notranslate"><span class="pre">&quot;42&quot;</span></code> dobili <code class="docutils literal notranslate"><span class="pre">Some</span> <span class="pre">42</span></code>, iz niza <code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code> pa <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>Razčlenjevalnike bomo združevali in vsak ne bo prebral celotnega niza, temveč samo njegov začetek, preostanek pa bo predal nadaljnjim razčlenjevalnikom. Zato ne vrnemo samo rezultata, temveč tudi preostali niz, zato je še boljši tip <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">(int</span> <span class="pre">*</span> <span class="pre">string)</span> <span class="pre">option</span></code>. Tako bi razčlenjevalnik pri vhodu <code class="docutils literal notranslate"><span class="pre">&quot;42abc&quot;</span></code> vrnil <code class="docutils literal notranslate"><span class="pre">Some</span> <span class="pre">(42,</span> <span class="pre">&quot;abc&quot;)</span></code>, pri vhodu <code class="docutils literal notranslate"><span class="pre">&quot;42&quot;</span></code> rezultat <code class="docutils literal notranslate"><span class="pre">Some</span> <span class="pre">(42,</span> <span class="pre">&quot;&quot;)</span></code>, pri vhodu <code class="docutils literal notranslate"><span class="pre">&quot;abc42&quot;</span></code> pa <code class="docutils literal notranslate"><span class="pre">None</span></code>, saj začetek ne predstavlja števila.</p>
+<p>Niz je veliko enostavneje brati postopoma, če ga poprej pretvorimo v zaporedje znakov. Za pretvorbo uporabljamo funkciji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">explode</span> <span class="n">str</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">init</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">length</span> <span class="n">str</span><span class="o">)</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">get</span> <span class="n">str</span><span class="o">)</span>
+<span class="k">let</span> <span class="n">implode</span> <span class="n">chrs</span> <span class="o">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">init</span> <span class="o">(</span><span class="nn">List</span><span class="p">.</span><span class="n">length</span> <span class="n">chrs</span><span class="o">)</span> <span class="o">(</span><span class="nn">List</span><span class="p">.</span><span class="n">nth</span> <span class="n">chrs</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val explode : string -&gt; char list = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val implode : char list -&gt; string = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">explode</span> <span class="s2">&quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : char list = [&#39;a&#39;; &#39;b&#39;; &#39;c&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">implode</span> <span class="o">[</span><span class="sc">&#39;T&#39;</span><span class="o">;</span> <span class="sc">&#39;P&#39;</span><span class="o">;</span> <span class="sc">&#39;J&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : string = &quot;TPJ&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tudi tip razčlenjevalnikov spremenimo v <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">(int</span> <span class="pre">*</span> <span class="pre">char</span> <span class="pre">list)</span> <span class="pre">option</span></code>. Ker seveda ne bomo brali samo celih števil, celoten tip razčlenjevalnikov parametriziramo glede na tip prebranih vrednosti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span> <span class="o">=</span> <span class="kt">char</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="kt">char</span> <span class="kt">list</span><span class="o">)</span> <span class="n">option</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type &#39;a parser = char list -&gt; (&#39;a * char list) option
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zgoraj opisani razčlenjevalnik bi tako lahko definirali kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">parse_int</span> <span class="o">:</span> <span class="kt">int</span> <span class="n">parser</span> <span class="o">=</span>
+  <span class="k">fun</span> <span class="n">chrs</span> <span class="o">-&gt;</span>
+  <span class="k">let</span> <span class="k">rec</span> <span class="n">take_initial_digits</span> <span class="o">=</span>
+    <span class="k">function</span>
+    <span class="o">|</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">chrs</span> <span class="k">when</span> <span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;0123456789&quot;</span> <span class="n">chr</span> <span class="o">-&gt;</span>
+        <span class="k">let</span> <span class="n">digits</span><span class="o">,</span> <span class="n">rest</span> <span class="o">=</span> <span class="n">take_initial_digits</span> <span class="n">chrs</span> <span class="k">in</span>
+        <span class="o">(</span><span class="n">chr</span> <span class="o">::</span> <span class="n">digits</span><span class="o">,</span> <span class="n">rest</span><span class="o">)</span>
+    <span class="o">|</span> <span class="n">chrs</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="bp">[]</span><span class="o">,</span> <span class="n">chrs</span><span class="o">)</span>
+  <span class="k">in</span>
+  <span class="k">match</span> <span class="n">take_initial_digits</span> <span class="n">chrs</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">(</span><span class="bp">[]</span><span class="o">,</span> <span class="n">chrs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">digits</span><span class="o">,</span> <span class="n">chrs</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="nc">Some</span> <span class="o">(</span><span class="n">int_of_string</span> <span class="o">(</span><span class="n">implode</span> <span class="n">digits</span><span class="o">),</span> <span class="n">chrs</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val parse_int : int parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">parse_int</span> <span class="o">(</span><span class="n">explode</span> <span class="s2">&quot;42abc&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * char list) option = Some (42, [&#39;a&#39;; &#39;b&#39;; &#39;c&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">parse_int</span> <span class="o">(</span><span class="n">explode</span> <span class="s2">&quot;42&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * char list) option = Some (42, [])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">parse_int</span> <span class="o">(</span><span class="n">explode</span> <span class="s2">&quot;abc42&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * char list) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri definiciji smo ročno dopisali tip <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">parser</span></code>, saj bi nam OCaml sicer prikazoval ekvivalenten, vendar manj pregleden tip <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">list</span> <span class="pre">-&gt;</span> <span class="pre">(int</span> <span class="pre">*</span> <span class="pre">char</span> <span class="pre">list)</span> <span class="pre">option</span></code>. Za preglednejše testiranje si napišimo pomožno funkcijo <code class="docutils literal notranslate"><span class="pre">($$$)</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">parser</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">('a</span> <span class="pre">*</span> <span class="pre">string)</span> <span class="pre">option</span></code>, ki samodejno poskrbi za pretvorbo med nizi in zaporedji znakov.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="o">(</span> <span class="o">$$$</span> <span class="o">)</span> <span class="o">(</span><span class="n">parser</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span><span class="o">)</span> <span class="n">str</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">parser</span> <span class="o">(</span><span class="n">explode</span> <span class="n">str</span><span class="o">)</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">rest</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">implode</span> <span class="n">rest</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ( $$$ ) : &#39;a parser -&gt; string -&gt; (&#39;a * string) option = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funkciji damo simbolno ime <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">$$$</span> <span class="pre">)</span></code>, da jo lahko kličemo infiksno kot <code class="docutils literal notranslate"><span class="pre">parser</span> <span class="pre">$$$</span> <span class="pre">niz</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">parse_int</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * string) option = Some (42, &quot;abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="osnovni-razclenjevalniki">
+<h4>Osnovni razčlenjevalniki<a class="headerlink" href="#osnovni-razclenjevalniki" title="Permalink to this heading">#</a></h4>
+<p>Vse razčlenjevalnike pisati na tak način bi bilo precej nerodno. Raje si bomo definirali nekaj osnovnih, ki jih bomo združevali v večje. Prvi je razčlenjevalnik <code class="docutils literal notranslate"><span class="pre">fail</span></code>, ki vedno zavrne vhod:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">fail</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">fun</span> <span class="o">_</span><span class="n">chrs</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val fail : &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">fail</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (&#39;a * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nato imamo funkcijo <code class="docutils literal notranslate"><span class="pre">return</span></code>, ki sprejme vrednost <code class="docutils literal notranslate"><span class="pre">v</span></code> in vrne razčlenjevalnik, ki ne glede na vhod vrne uspešno prebrano vrednost <code class="docutils literal notranslate"><span class="pre">v</span></code>, celoten vhod pa posreduje naprej.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">return</span> <span class="n">v</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">chrs</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">chrs</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val return : &#39;a -&gt; &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">return</span> <span class="mi">10</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * string) option = Some (10, &quot;42abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prvi razčlenjevalnik, ki bo dejansko upošteval vhod, je <code class="docutils literal notranslate"><span class="pre">character</span></code>, ki prebere prvi znak, kadar obstaja, ostale pa pošlje naprej:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">character</span> <span class="o">:</span> <span class="kt">char</span> <span class="n">parser</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+  <span class="o">|</span> <span class="n">chr</span> <span class="o">::</span> <span class="n">chrs</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">chr</span><span class="o">,</span> <span class="n">chrs</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val character : char parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;4&#39;, &quot;2abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">$$$</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nato imamo izbiro, ki najprej poskusi en razčlenjevalnik, če pa temu ne uspe, pa še drugega. Oba razčlenjevalnika morata seveda vračati vrednost enakega tipa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="o">(</span> <span class="o">||</span> <span class="o">)</span> <span class="o">(</span><span class="n">parser1</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span><span class="o">)</span> <span class="o">(</span><span class="n">parser2</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span><span class="o">)</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span> <span class="o">=</span>
+ <span class="k">fun</span> <span class="n">chrs</span> <span class="o">-&gt;</span>
+  <span class="k">match</span> <span class="n">parser1</span> <span class="n">chrs</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="n">parser2</span> <span class="n">chrs</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">chrs&#39;</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">chrs&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ( || ) : &#39;a parser -&gt; &#39;a parser -&gt; &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">fail</span> <span class="o">||</span> <span class="n">character</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;4&#39;, &quot;2abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">return</span> <span class="sc">&#39;X&#39;</span> <span class="o">||</span> <span class="n">character</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;X&#39;, &quot;42abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nazadnje moramo znati razčlenjevalnike še združevati, kar storimo s funkcijo <code class="docutils literal notranslate"><span class="pre">&gt;&gt;=</span></code>, ki dva razčlenjevalnika veriži enega za drugim. V večini primerov bo drugi razčlenjevalnik odvisen od vrednosti, ki jo je prebral prvi. Na primer, če bomo najprej prebrali znak za začetek komentarja, bomo preskočili vse do konca vrstice, če pa bomo našli kaj drugega, pa bomo pričakovali veljaven ukaz. Tako je <code class="docutils literal notranslate"><span class="pre">parser1</span></code> razčlenjevalnik, ki vrne vrednost tipa <code class="docutils literal notranslate"><span class="pre">'a</span></code>, med tem ko <code class="docutils literal notranslate"><span class="pre">parser2</span></code> ni razčlenjevalnik, temveč funkcija <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span> <span class="pre">parser</span></code>, ki vrne razčlenjevalnik odvisen od prebranega rezultata.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="o">(</span> <span class="o">&gt;&gt;=</span> <span class="o">)</span> <span class="o">(</span><span class="n">parser1</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">parser</span><span class="o">)</span> <span class="o">(</span><span class="n">parser2</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="n">parser</span><span class="o">)</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">b</span> <span class="n">parser</span> <span class="o">=</span>
+ <span class="k">fun</span> <span class="n">chrs</span> <span class="o">-&gt;</span>
+  <span class="k">match</span> <span class="n">parser1</span> <span class="n">chrs</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">v</span><span class="o">,</span> <span class="n">chrs&#39;</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">parser2</span> <span class="n">v</span> <span class="n">chrs&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ( &gt;&gt;= ) : &#39;a parser -&gt; (&#39;a -&gt; &#39;b parser) -&gt; &#39;b parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Veriženje deluje tako, da najprej uporabimo <code class="docutils literal notranslate"><span class="pre">parser1</span></code>. Če že ta zavrne vhod, takoj končamo in vrnemo <code class="docutils literal notranslate"><span class="pre">None</span></code>. V primeru, pa da dobimo neko vrednost <code class="docutils literal notranslate"><span class="pre">v</span></code>, jo skupaj s preostankom znakov podamo funkciji <code class="docutils literal notranslate"><span class="pre">parser2</span></code>, ki potem uspešno ali neuspešno vrne končni rezultat.</p>
+<p>Na primer, spodnja kombinacija najprej prebere katerikoli znak, nato pa ta znak poda funkciji, ki ne glede na preostanek, ki sledi, vedno vrne niz, sestavljen iz 10 kopij tega znaka.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">vedno_preberi_10_kopij_znaka</span> <span class="n">c</span> <span class="o">=</span> <span class="n">return</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">make</span> <span class="mi">10</span> <span class="n">c</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val vedno_preberi_10_kopij_znaka : char -&gt; string parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">&gt;&gt;=</span> <span class="n">vedno_preberi_10_kopij_znaka</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (string * string) option = Some (&quot;4444444444&quot;, &quot;2abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Isto seveda lahko dosežemo tudi z anonimno funkcijo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">character</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">make</span> <span class="mi">10</span> <span class="n">c</span><span class="o">))</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (string * string) option = Some (&quot;4444444444&quot;, &quot;2abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="osnovni-kombinatorji">
+<h4>Osnovni kombinatorji<a class="headerlink" href="#osnovni-kombinatorji" title="Permalink to this heading">#</a></h4>
+<p>Izkaže se, da je zgoraj naštetih pet razčlenjevalnikov, torej <code class="docutils literal notranslate"><span class="pre">fail</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code>, <code class="docutils literal notranslate"><span class="pre">character</span></code>, <code class="docutils literal notranslate"><span class="pre">||</span></code> in <code class="docutils literal notranslate"><span class="pre">&gt;&gt;=</span></code> dovolj, da izrazimo vse razčlenjevalnike, ki jih potrebujemo. Na primer, če želimo vrniti par zaporedoma prebranih vrednosti, lahko to zapišemo kot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">pair</span> <span class="n">parser1</span> <span class="n">parser2</span> <span class="o">=</span> <span class="n">parser1</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v1</span> <span class="o">-&gt;</span> <span class="n">parser2</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v2</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="n">v1</span><span class="o">,</span> <span class="n">v2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val pair : &#39;a parser -&gt; &#39;b parser -&gt; (&#39;a * &#39;b) parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">pair</span> <span class="n">character</span> <span class="n">character</span> <span class="o">$$$</span> <span class="s2">&quot;42abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : ((char * char) * string) option = Some ((&#39;4&#39;, &#39;2&#39;), &quot;abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Če želimo, da uspešno prebrana vrednost zadošča še kakšnemu predikatu, uporabimo funkcijo <code class="docutils literal notranslate"><span class="pre">satisfy</span></code>, kjer v drugem delu odvisno od pogoja vrednost vrnemo ali zavrnemo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">satisfy</span> <span class="n">cond</span> <span class="n">parser</span> <span class="o">=</span>
+  <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">cond</span> <span class="n">v</span> <span class="k">then</span> <span class="n">return</span> <span class="n">v</span> <span class="k">else</span> <span class="n">fail</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val satisfy : (&#39;a -&gt; bool) -&gt; &#39;a parser -&gt; &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Na primer, spodnji razčlenjevalnik sprejema samo znake <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, <code class="docutils literal notranslate"><span class="pre">'b'</span></code> in <code class="docutils literal notranslate"><span class="pre">'c'</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">satisfy</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;abc&quot;</span><span class="o">)</span> <span class="n">character</span> <span class="o">$$$</span> <span class="s2">&quot;123&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">satisfy</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;abc&quot;</span><span class="o">)</span> <span class="n">character</span> <span class="o">$$$</span> <span class="s2">&quot;a23&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;a&#39;, &quot;23&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri zapisu pogojnih razčlenjevalnikov uporabljamo operacijo <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">|&gt;</span> <span class="pre">f</span></code>, ki funkcijo <code class="docutils literal notranslate"><span class="pre">f</span></code> uporabi na vrednosti <code class="docutils literal notranslate"><span class="pre">x</span></code>. Isti primer kot zgoraj bi napisali na sledeč način, kjer je bolj jasno, da najprej preberemo znak, nato pa preverimo, da je eden od znakov niza <code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">|&gt;</span> <span class="n">satisfy</span> <span class="o">(</span><span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;abc&quot;</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;a23&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;a&#39;, &quot;23&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Konkretna uporaba kombinatorja <code class="docutils literal notranslate"><span class="pre">satisfy</span></code> je razčlenjevalnik <code class="docutils literal notranslate"><span class="pre">exactly</span></code>, ki sprejme natanko znak <code class="docutils literal notranslate"><span class="pre">chr</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">exactly</span> <span class="n">chr</span> <span class="o">=</span> <span class="n">character</span> <span class="o">|&gt;</span> <span class="n">satisfy</span> <span class="o">((</span> <span class="o">=</span> <span class="o">)</span> <span class="n">chr</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val exactly : char -&gt; char parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">exactly</span> <span class="sc">&#39;a&#39;</span> <span class="o">||</span> <span class="n">exactly</span> <span class="sc">&#39;b&#39;</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;a&#39;, &quot;bc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Enako si lahko definiramo razčlenjevalnike, ki sprejemajo samo števke, črke ali presledke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">digit</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">is_digit</span> <span class="o">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;0123456789&quot;</span> <span class="k">in</span>
+  <span class="n">character</span> <span class="o">|&gt;</span> <span class="n">satisfy</span> <span class="n">is_digit</span>
+
+<span class="k">let</span> <span class="n">alpha</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">is_alpha</span> <span class="o">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot;abcdefghijklmnopqrstvwuxyz&quot;</span> <span class="k">in</span>
+  <span class="n">character</span> <span class="o">|&gt;</span> <span class="n">satisfy</span> <span class="n">is_alpha</span>
+
+<span class="k">let</span> <span class="n">space</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">is_space</span> <span class="o">=</span> <span class="nn">String</span><span class="p">.</span><span class="n">contains</span> <span class="s2">&quot; </span><span class="se">\n\t\r</span><span class="s2">&quot;</span> <span class="k">in</span>
+  <span class="n">character</span> <span class="o">|&gt;</span> <span class="n">satisfy</span> <span class="n">is_space</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val digit : char parser = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val alpha : char parser = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val space : char parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podoben kombinator je <code class="docutils literal notranslate"><span class="pre">map</span></code>, ki prebere rezultat <code class="docutils literal notranslate"><span class="pre">v</span></code> in ga pretvori s pomočjo funkcije <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">map</span> <span class="n">f</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="n">f</span> <span class="n">v</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val map : (&#39;a -&gt; &#39;b) -&gt; &#39;a parser -&gt; &#39;b parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">character</span> <span class="o">|&gt;</span> <span class="n">map</span> <span class="nn">Char</span><span class="p">.</span><span class="n">uppercase_ascii</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;A&#39;, &quot;bc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poseben primer operacije <code class="docutils literal notranslate"><span class="pre">&gt;&gt;=</span></code> je <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>, kjer ne upoštevamo vrednosti, ki jo je prebral prvi razčlenjevalnik. Na primer, vemo, da se zanka vedno začne s ključno besedo <code class="docutils literal notranslate"><span class="pre">while</span></code>, ampak sama vrednost <code class="docutils literal notranslate"><span class="pre">&quot;while&quot;</span></code> za pomen programa ni pomembna.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="o">(</span> <span class="o">&gt;&gt;</span> <span class="o">)</span> <span class="n">parser1</span> <span class="n">parser2</span> <span class="o">=</span> <span class="n">parser1</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">parser2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ( &gt;&gt; ) : &#39;a parser -&gt; &#39;b parser -&gt; &#39;b parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">exactly</span> <span class="sc">&#39;a&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">exactly</span> <span class="sc">&#39;b&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">character</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;abcde&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = Some (&#39;c&#39;, &quot;de&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="n">exactly</span> <span class="sc">&#39;a&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">exactly</span> <span class="sc">&#39;b&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">character</span><span class="o">)</span> <span class="o">$$$</span> <span class="s2">&quot;bacde&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Postopek lahko posplošimo na poljuben niz znakov. Razčlenjevalnik napišemo tako, da besedo <code class="docutils literal notranslate"><span class="pre">str</span></code> razbijemo na seznam znakov <code class="docutils literal notranslate"><span class="pre">chrs</span></code>, nato iz tega naredimo seznam razčlenjevalnikov, ki zaporedoma sprejemajo natanko te znake, nato pa jih vse skupaj verižimo s pomočjo <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>. Ta razčlenjevalnik bomo uporabljali za prebiranje ključnih besed kot so <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code> in podobno, zato na koncu vrnemo vrednost <code class="docutils literal notranslate"><span class="pre">()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">word</span> <span class="n">str</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">chrs</span> <span class="o">=</span> <span class="n">explode</span> <span class="n">str</span> <span class="k">in</span>
+  <span class="k">let</span> <span class="n">chr_parsers</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">map</span> <span class="n">exactly</span> <span class="n">chrs</span> <span class="k">in</span>
+  <span class="nn">List</span><span class="p">.</span><span class="n">fold_right</span> <span class="o">(</span> <span class="o">&gt;&gt;</span> <span class="o">)</span> <span class="n">chr_parsers</span> <span class="o">(</span><span class="n">return</span> <span class="bp">()</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val word : string -&gt; unit parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="s2">&quot;while&quot;</span> <span class="o">$$$</span> <span class="s2">&quot;while true do skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (unit * string) option = Some ((), &quot; true do skip&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="s2">&quot;while&quot;</span> <span class="o">$$$</span> <span class="s2">&quot;if true then skip else skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (unit * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno lahko s pomočjo <code class="docutils literal notranslate"><span class="pre">fold_right</span></code> zaporedoma z <code class="docutils literal notranslate"><span class="pre">||</span></code> poskusimo vse razčlenjevalnike iz danega seznama:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">one_of</span> <span class="n">parsers</span> <span class="o">=</span> <span class="nn">List</span><span class="p">.</span><span class="n">fold_right</span> <span class="o">(</span> <span class="o">||</span> <span class="o">)</span> <span class="n">parsers</span> <span class="n">fail</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val one_of : &#39;a parser list -&gt; &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">one_of</span> <span class="o">[</span><span class="n">word</span> <span class="s2">&quot;while&quot;</span><span class="o">;</span> <span class="n">word</span> <span class="s2">&quot;if&quot;</span><span class="o">]</span> <span class="o">$$$</span> <span class="s2">&quot;while true do skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (unit * string) option = Some ((), &quot; true do skip&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">one_of</span> <span class="o">[</span><span class="n">word</span> <span class="s2">&quot;while&quot;</span><span class="o">;</span> <span class="n">word</span> <span class="s2">&quot;if&quot;</span><span class="o">]</span> <span class="o">$$$</span> <span class="s2">&quot;if true then skip else skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (unit * string) option = Some ((), &quot; true then skip else skip&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">one_of</span> <span class="o">[</span><span class="n">word</span> <span class="s2">&quot;while&quot;</span><span class="o">;</span> <span class="n">word</span> <span class="s2">&quot;if&quot;</span><span class="o">]</span> <span class="o">$$$</span> <span class="s2">&quot;skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (unit * string) option = None
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rekurzivno si lahko definiramo tudi razčlenjevalnika <code class="docutils literal notranslate"><span class="pre">many</span></code> in <code class="docutils literal notranslate"><span class="pre">many1</span></code>, ki dani razčlenjevalnik uporabita poljubno mnogokrat oziroma vsaj enkrat, vrneta pa seznam uspešno prebranih vrednosti:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">many</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">many1</span> <span class="n">parser</span> <span class="o">||</span> <span class="n">return</span> <span class="bp">[]</span>
+
+<span class="ow">and</span> <span class="n">many1</span> <span class="n">parser</span> <span class="o">=</span>
+  <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v</span> <span class="o">-&gt;</span>
+  <span class="n">many</span> <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">vs</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="n">v</span> <span class="o">::</span> <span class="n">vs</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val many : &#39;a parser -&gt; &#39;a list parser = &lt;fun&gt;
+val many1 : &#39;a parser -&gt; &#39;a list parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">many</span> <span class="n">digit</span> <span class="o">$$$</span> <span class="s2">&quot;1234abc567&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (char list * string) option = Some ([&#39;1&#39;; &#39;2&#39;; &#39;3&#39;; &#39;4&#39;], &quot;abc567&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>S pomočjo vseh zgoraj naštetih kombinatorjev zdaj veliko lepše napišemo razčlenjevalnik za branje celih števil. Najprej moramo prebrati vsaj eno števko, nato seznam števk združimo v en sam niz, na koncu pa pogoljufamo in s pomočjo vgrajene funkcije to pretvorimo v število.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">integer</span> <span class="o">=</span> <span class="n">many1</span> <span class="n">digit</span> <span class="o">|&gt;</span> <span class="n">map</span> <span class="n">implode</span> <span class="o">|&gt;</span> <span class="n">map</span> <span class="n">int_of_string</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val integer : int parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">integer</span> <span class="o">$$$</span> <span class="s2">&quot;123abc&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * string) option = Some (123, &quot;abc&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="razclenjevalniki-za-imp">
+<h4>Razčlenjevalniki za IMP<a class="headerlink" href="#razclenjevalniki-za-imp" title="Permalink to this heading">#</a></h4>
+<p>Razvili smo vsa orodja, ki jih potrebujemo, da preberemo celotno sintakso jezika IMP. Za ločevanje med posameznimi deli bomo uporabili presledke. Pri ključnih besedah bomo zahtevali vsaj enega, okoli operatorjev pa ne nujno:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">spaces</span> <span class="o">=</span> <span class="n">many</span> <span class="n">space</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="bp">()</span>
+<span class="k">let</span> <span class="n">spaces1</span> <span class="o">=</span> <span class="n">many1</span> <span class="n">space</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="bp">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val spaces : unit parser = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val spaces1 : unit parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zaradi enostavnosti bomo za večje podizraze zahtevali, da se pojavijo v oklepajih:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">parens</span> <span class="n">parser</span> <span class="o">=</span>
+  <span class="n">exactly</span> <span class="sc">&#39;(&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v</span> <span class="o">-&gt;</span> <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">exactly</span> <span class="sc">&#39;)&#39;</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val parens : &#39;a parser -&gt; &#39;a parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">parens</span> <span class="n">integer</span> <span class="o">$$$</span> <span class="s2">&quot;(1234)&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (int * string) option = Some (1234, &quot;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lokacije se bodo začele z znakom <code class="docutils literal notranslate"><span class="pre">#</span></code>, ki jim bo sledilo ime. To bo sestavljeno iz alfanumeričnih znakov, od katerih mora biti prvi črka.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">ident</span> <span class="o">=</span>
+  <span class="n">alpha</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">chr</span> <span class="o">-&gt;</span>
+  <span class="n">many</span> <span class="o">(</span><span class="n">alpha</span> <span class="o">||</span> <span class="n">digit</span><span class="o">)</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">chrs</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="n">implode</span> <span class="o">(</span><span class="n">chr</span> <span class="o">::</span> <span class="n">chrs</span><span class="o">))</span>
+
+<span class="k">let</span> <span class="n">location</span> <span class="o">=</span> <span class="n">word</span> <span class="s2">&quot;#&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">ident</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">ident</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nc">Location</span> <span class="n">ident</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val ident : string parser = &lt;fun&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val location : location parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">location</span> <span class="o">$$$</span> <span class="s2">&quot;#fact&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * string) option = Some (Location &quot;fact&quot;, &quot;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dvojiška operacija je podana s simbolom <code class="docutils literal notranslate"><span class="pre">op</span></code>, njegovim pomenom <code class="docutils literal notranslate"><span class="pre">f</span></code> ter z razčlenjevalnikom argumentov <code class="docutils literal notranslate"><span class="pre">parser</span></code>. Med operacijo in argumentoma so morebitni presledki</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">binop</span> <span class="n">parser</span> <span class="n">op</span> <span class="n">f</span> <span class="o">=</span>
+  <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v1</span> <span class="o">-&gt;</span>
+  <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="n">op</span> <span class="o">&gt;&gt;</span> <span class="n">spaces</span> <span class="o">&gt;&gt;</span>
+  <span class="n">parser</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">v2</span> <span class="o">-&gt;</span>
+  <span class="n">return</span> <span class="o">(</span><span class="n">f</span> <span class="n">v1</span> <span class="n">v2</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val binop : &#39;a parser -&gt; string -&gt; (&#39;a -&gt; &#39;a -&gt; &#39;b) -&gt; &#39;b parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pri razčlenjevalniku za aritmetične izraze sledimo sintaksi. Izrazi so lahko sestavljeni iz aritmetičnih operacij ali atomarni, pri čemer so atomarni izrazi lokacije, konstante ali običajni izrazi v oklepajih.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">exp</span> <span class="n">chrs</span> <span class="o">=</span>
+  <span class="n">one_of</span>
+    <span class="o">[</span>
+      <span class="n">binop</span> <span class="n">atomic_exp</span> <span class="s2">&quot;+&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Plus</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+      <span class="n">binop</span> <span class="n">atomic_exp</span> <span class="s2">&quot;-&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Minus</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+      <span class="n">binop</span> <span class="n">atomic_exp</span> <span class="s2">&quot;*&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Times</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+      <span class="n">atomic_exp</span><span class="o">;</span>
+    <span class="o">]</span>
+    <span class="n">chrs</span>
+
+<span class="ow">and</span> <span class="n">atomic_exp</span> <span class="n">chrs</span> <span class="o">=</span>
+  <span class="n">one_of</span>
+    <span class="o">[</span>
+      <span class="o">(</span><span class="n">location</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">l</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nc">Lookup</span> <span class="n">l</span><span class="o">));</span>
+      <span class="o">(</span><span class="n">integer</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nc">Int</span> <span class="n">n</span><span class="o">));</span>
+      <span class="n">parens</span> <span class="n">exp</span><span class="o">;</span>
+    <span class="o">]</span>
+    <span class="n">chrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val exp : exp parser = &lt;fun&gt;
+val atomic_exp : exp parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">$$$</span> <span class="s2">&quot;1 + 3&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (exp * string) option = Some (Plus (Int 1, Int 3), &quot;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno definiramo razčlenjevalnik za Booleove izraze:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">bexp</span> <span class="o">=</span>
+  <span class="n">one_of</span>
+    <span class="o">[</span>
+      <span class="n">word</span> <span class="s2">&quot;true&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nc">Bool</span> <span class="bp">true</span><span class="o">);</span>
+      <span class="n">word</span> <span class="s2">&quot;false&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="o">(</span><span class="nc">Bool</span> <span class="bp">false</span><span class="o">);</span>
+      <span class="n">binop</span> <span class="n">exp</span> <span class="s2">&quot;=&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Equal</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+      <span class="n">binop</span> <span class="n">exp</span> <span class="s2">&quot;&lt;&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Less</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+      <span class="n">binop</span> <span class="n">exp</span> <span class="s2">&quot;&gt;&quot;</span> <span class="o">(</span><span class="k">fun</span> <span class="n">e1</span> <span class="n">e2</span> <span class="o">-&gt;</span> <span class="nc">Greater</span> <span class="o">(</span><span class="n">e1</span><span class="o">,</span> <span class="n">e2</span><span class="o">));</span>
+    <span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val bexp : bexp parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">bexp</span> <span class="o">$$$</span> <span class="s2">&quot;1 + 3 &lt; 2 * 4&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (bexp * string) option =
+Some (Less (Plus (Int 1, Int 3), Times (Int 2, Int 4)), &quot;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobno definiramo tudi razčlenjevalnik za ukaze:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">cmd</span> <span class="n">chrs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">if_then_else</span> <span class="o">=</span>
+    <span class="n">word</span> <span class="s2">&quot;if&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">bexp</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">b</span> <span class="o">-&gt;</span>
+    <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="s2">&quot;then&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">cmd</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c1</span> <span class="o">-&gt;</span>
+    <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="s2">&quot;else&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">atomic_cmd</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c2</span> <span class="o">-&gt;</span>
+    <span class="n">return</span> <span class="o">(</span><span class="nc">IfThenElse</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">))</span>
+  <span class="ow">and</span> <span class="n">while_do</span> <span class="o">=</span>
+    <span class="n">word</span> <span class="s2">&quot;while&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">bexp</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">b</span> <span class="o">-&gt;</span>
+    <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="s2">&quot;do&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces1</span> <span class="o">&gt;&gt;</span> <span class="n">atomic_cmd</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c</span> <span class="o">-&gt;</span>
+    <span class="n">return</span> <span class="o">(</span><span class="nc">WhileDo</span> <span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">c</span><span class="o">))</span>
+  <span class="ow">and</span> <span class="n">seq</span> <span class="o">=</span>
+    <span class="n">atomic_cmd</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c1</span> <span class="o">-&gt;</span>
+    <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="s2">&quot;;&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">cmd</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">c2</span> <span class="o">-&gt;</span>
+    <span class="n">return</span> <span class="o">(</span><span class="nc">Seq</span> <span class="o">(</span><span class="n">c1</span><span class="o">,</span> <span class="n">c2</span><span class="o">))</span>
+  <span class="k">in</span>
+  <span class="n">one_of</span> <span class="o">[</span> <span class="n">if_then_else</span><span class="o">;</span> <span class="n">while_do</span><span class="o">;</span> <span class="n">seq</span><span class="o">;</span> <span class="n">atomic_cmd</span> <span class="o">]</span> <span class="n">chrs</span>
+
+<span class="ow">and</span> <span class="n">atomic_cmd</span> <span class="n">chrs</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">assign</span> <span class="o">=</span>
+    <span class="n">location</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">l</span> <span class="o">-&gt;</span>
+    <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">word</span> <span class="s2">&quot;:=&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">spaces</span> <span class="o">&gt;&gt;</span> <span class="n">exp</span> <span class="o">&gt;&gt;=</span> <span class="k">fun</span> <span class="n">e</span> <span class="o">-&gt;</span>
+    <span class="n">return</span> <span class="o">(</span><span class="nc">Assign</span> <span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">e</span><span class="o">))</span>
+  <span class="ow">and</span> <span class="n">skip</span> <span class="o">=</span> <span class="n">word</span> <span class="s2">&quot;skip&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">return</span> <span class="nc">Skip</span>
+  <span class="k">in</span>
+  <span class="n">one_of</span> <span class="o">[</span> <span class="n">assign</span><span class="o">;</span> <span class="n">skip</span><span class="o">;</span> <span class="n">parens</span> <span class="n">cmd</span> <span class="o">]</span> <span class="n">chrs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val cmd : cmd parser = &lt;fun&gt;
+val atomic_cmd : cmd parser = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">cmd</span> <span class="o">$$$</span> <span class="s2">&quot;if 3 &lt; 4 then skip else skip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (cmd * string) option =
+Some (IfThenElse (Less (Int 3, Int 4), Skip, Skip), &quot;&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vsaka IMP datoteka je sestavljena iz enega samega ukaza (ki je seveda lahko sestavljen iz več ukazov, ločenih s podpičjem). Da preberemo celotno datoteko, torej le pokličemo razčlenjevalnik <code class="docutils literal notranslate"><span class="pre">cmd</span></code>. Če nam ni ostalo nič neprebranih znakov, poženemo <code class="docutils literal notranslate"><span class="pre">eval_cmd</span></code> na praznem seznamu, sicer pa program zavrnemo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">run</span> <span class="n">str</span> <span class="o">=</span>
+  <span class="k">match</span> <span class="n">str</span> <span class="o">|&gt;</span> <span class="nn">String</span><span class="p">.</span><span class="n">trim</span> <span class="o">|&gt;</span> <span class="n">explode</span> <span class="o">|&gt;</span> <span class="n">cmd</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="o">(</span><span class="n">c</span><span class="o">,</span> <span class="bp">[]</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">eval_cmd</span> <span class="bp">[]</span> <span class="n">c</span>
+  <span class="o">|</span> <span class="nc">Some</span> <span class="o">(_,</span> <span class="o">_</span> <span class="o">::</span> <span class="o">_)</span> <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;Parsing error&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>val run : string -&gt; (location * int) list = &lt;fun&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-OCaml notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="s2">&quot;#n := 10; #fact := 1; while #n &gt; 0 do ( #fact := #fact * #n; #n := #n - 1 )&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- : (location * int) list = [(Location &quot;n&quot;, 0); (Location &quot;fact&quot;, 3628800)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="00-uvod.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Teorija programskih jezikov</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="03-indukcija.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Indukcija</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa-jezika">Sintaksa jezika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konkretna-sintaksa">Konkretna sintaksa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abstraktna-sintaksa">Abstraktna sintaksa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-jezika">Implementacija jezika</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-abstraktne-sintakse">Implementacija abstraktne sintakse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-izvajanja">Implementacija izvajanja</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacija-razclenjevalnika">Implementacija razčlenjevalnika</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-razclenjevalnikov-a-parser">Tip razčlenjevalnikov <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">parser</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-razclenjevalniki">Osnovni razčlenjevalniki</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#osnovni-kombinatorji">Osnovni kombinatorji</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#razclenjevalniki-za-imp">Razčlenjevalniki za IMP</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

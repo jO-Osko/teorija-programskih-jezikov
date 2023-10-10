@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>λ-račun &#8212; Teorija programskih jezikov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"intsym": ["\\underline{#1}", 1], "kwd": ["\\mathbf{#1}", 1], "kwdpre": ["\\kwd{#1}\\;", 1], "kwdmid": ["\\;\\kwd{#1}\\;", 1], "kwdpost": ["\\;\\kwd{#1}", 1], "true": "\\kwd{true}", "false": "\\kwd{false}", "ifthenelse": ["\\kwdpre{if} #1 \\kwdmid{then} #2 \\kwdmid{else} #3", 3], "whiledo": ["\\kwdpre{while} #1 \\kwdmid{do} #2", 2], "skip": "\\kwd{skip}", "ttt": "t\\!t", "fff": "f\\!\\!f", "infer": ["\\displaystyle{\\frac{#1}{#2}}", 2], "boolty": "\\kwd{bool}", "intty": "\\kwd{int}", "eqs": "\\mathcal{E}", "ctxt": "\\mathcal{C}", "itp": ["[\\![ #1 ]\\!]", 1], "return": "\\kwdpre{return}", "letin": ["\\kwdpre{let} #1 \\kwdmid{in}", 1], "bind": "\\mathop{>\\!\\!\\!>\\!\\!\\!=}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-lambda-racun';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tipi" href="06-tipi.html" />
+    <link rel="prev" title="Metateorija programskih jezikov" href="04-metateorija-programskih-jezikov.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Teorija programskih jezikov</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Teorija programskih jezikov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Osnove</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-praksa-programskih-jezikov.html">Praksa programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-indukcija.html">Indukcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Metateorija</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-metateorija-programskih-jezikov.html">Metateorija programskih jezikov</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">λ-račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-tipi.html">Tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-izpeljava-tipov.html">Izpeljava tipov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Denotacijska semantika</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-denotacijska-semantika.html">Denotacijska semantika</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-domene.html">Domene</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Učinki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08-racunski-ucinki.html">Računski učinki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-monade.html">Monade</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/matijapretnar/teorija-programskih-jezikov/zapiski?urlpath=tree/05-lambda-racun.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/05-lambda-racun.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/05-lambda-racun.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>λ-račun</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa">Sintaksa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacijska-semantika">Operacijska semantika</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#churchevo-kodiranje">Churchevo kodiranje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logicne-vrednosti">Logične vrednosti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rekurzija">Rekurzija</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-1">Naloga 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-2">Naloga 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-3">Naloga 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-4">Naloga 4</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="racun">
+<h1>λ-račun<a class="headerlink" href="#racun" title="Permalink to this heading">#</a></h1>
+<p>Najpomembnejše mesto v teoriji programskih jezikov zaseda λ-račun, ki tvori jedro vsakega funkcijskega programskega jezika.</p>
+<section id="sintaksa">
+<h2>Sintaksa<a class="headerlink" href="#sintaksa" title="Permalink to this heading">#</a></h2>
+<p>Za razliko od IMPa sintaksa λ-računa vsebuje le eno vrsto izrazov:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{izraz } M, N ::= x \mid \lambda x. M \mid M \, N
+\]</div>
+<p>Vsak izraz lahko predstavlja:</p>
+<ul class="simple">
+<li><p>spremenljivko,</p></li>
+<li><p><em>abstrakcijo</em> (oziroma <em>lambdo</em>), ki predstavlja funkcijo s <em>parametrom</em> <span class="math notranslate nohighlight">\(x\)</span> in <em>telesom</em> <span class="math notranslate nohighlight">\(M\)</span>, ter</p></li>
+<li><p><em>aplikacijo</em>, ki funkcijo, predstavljeno z <span class="math notranslate nohighlight">\(M\)</span>, uporabi na <em>argumentu</em>, predstavljenim z izrazom <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+</ul>
+<p>Na primer:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\lambda x. x\)</span> predstavlja identično funkcijo,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda c. \lambda x. c\)</span> predstavlja funkcijo, ki sprejme argument <span class="math notranslate nohighlight">\(c\)</span> in vrne konstantno funkcijo, ki vedno vrne <span class="math notranslate nohighlight">\(c\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda f. \lambda g. \lambda x. f (g x)\)</span> predstavlja kompozitum, ki sprejme funkciji <span class="math notranslate nohighlight">\(f\)</span> in <span class="math notranslate nohighlight">\(g\)</span> ter vrne funkcijo, ki na <span class="math notranslate nohighlight">\(x\)</span> najprej uporabi <span class="math notranslate nohighlight">\(g\)</span>, nato pa še <span class="math notranslate nohighlight">\(f\)</span>.</p></li>
+</ul>
+<p>Če bi želeli, bi lahko izraze razširili še z drugimi konstrukti, na primer aritmetičnimi operacijami ali pogojnimi izrazi, vendar bomo videli, da jih načeloma ne potrebujemo, zato zaenkrat počakajmo z njimi.</p>
+<p>Parameter abstrakcije je vezana spremenljivka, zato na primer izraza <span class="math notranslate nohighlight">\(\lambda x. x y\)</span> in <span class="math notranslate nohighlight">\(\lambda w. w y\)</span> predstavljata isto funkcijo. Spremenljivka <span class="math notranslate nohighlight">\(y\)</span> v tem primeru ni vezana, temveč <em>prosta</em>. Natančneje lahko definiramo množico vseh prostih spremenljivk <span class="math notranslate nohighlight">\(fv(M)\)</span> v izrazu <span class="math notranslate nohighlight">\(M\)</span> kot</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+  fv(x) &amp;:= \{ x \} \\
+  fv(\lambda x. M) &amp;:= fv(M) \setminus \{ x \} \\
+  fv(M \, N) &amp;:= fv(M) \cup fv(N)
+\end{align*}
+\end{split}\]</div>
+<p>Funkcije bomo uporabili tako, da bomo vse pojavitve parametra v telesu zamenjali z argumentom. V ta namen rekurzivno definiramo <em>substitucijo</em> <span class="math notranslate nohighlight">\(M[N / x]\)</span> kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+  x[N / x] &amp;:= N \\
+  y[N / x] &amp;:= y \qquad (x \ne y) \\
+  (\lambda y. M)[N / x] &amp;:= \lambda y. M[N / x] \qquad (x \ne y, y \notin fv(N)) \\
+  (M_1 \, M_2)[N / x] &amp;:= (M_1[N / x]) \, (M_2[N / x])
+\end{align*}
+\end{split}\]</div>
+<p>Kot vidimo, moramo paziti, da pri substituciji abstrakcij ne bi zamenjali vezane spremenljivke. Na primer (saj <span class="math notranslate nohighlight">\((\lambda y. y)[x / y] \ne \lambda y. x\)</span>) ali po nesreči vezali prej prosto spremenljivko (saj <span class="math notranslate nohighlight">\((\lambda y. x)[y / x] \ne \lambda y. y\)</span>). Da se izognemo težavam, bomo parametre abstrakcij po potrebi preimenovali.</p>
+</section>
+<section id="operacijska-semantika">
+<h2>Operacijska semantika<a class="headerlink" href="#operacijska-semantika" title="Permalink to this heading">#</a></h2>
+<p>Ukazi v IMPu so zaključili izvajanje, ko so prispeli do ukaza <span class="math notranslate nohighlight">\(\skip\)</span>, pri λ-računu pa v ta namen definiramo podmnožico <em>vrednosti</em> kot</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{vrednost } V ::= \lambda x. M
+\]</div>
+<p>Ker lahko izrazi v lambda računu divergirajo, bomo tako kot v IMPu tudi tu podali semantiko malih korakov <span class="math notranslate nohighlight">\(M \leadsto M'\)</span>, podano s sledečimi pravili:</p>
+<div class="math notranslate nohighlight">
+\[
+  \infer{M \leadsto M'}{M \, N \leadsto M' \, N} \qquad
+  \infer{N \leadsto N'}{V \, N \leadsto V \, N'} \qquad
+  \infer{}{(\lambda x. M) \, V \leadsto M[V /x]}
+\]</div>
+<p>Prvo pravilo govori o tem, da najprej do vrednosti izračunamo prvi člen. Ko je ta izračunan, lahko uporabimo drugo pravilo in izračunamo še drugi člen. Če sta oba vrednosti (in je prvi funkcija), lahko funkcijo s pomočjo substitucije uporabimo na argumentu. Zadnji korak ima posebno ime in sicer <em>β-redukcija</em>.</p>
+<p>Izbrana pravila niso edini način, na katerega lahko podamo semantiko λ-računa. V lenih funkcijskih jezikih, kot je Haskell, argumenta pred β-redukcijo ne gremo računati, saj ga morda ne bomo nikoli potrebovali. Takemu načinu računanja pravimo <em>leno izvajanje</em>, oziroma <em>call-by-name</em> ali <em>CBN</em>. Načinu izvajanja, ki smo ga spoznali prej, pravimo <em>neučakano izvajanje</em>, oziroma <em>call-by-value</em>. Leno izvajanje bi podali samo s praviloma:</p>
+<div class="math notranslate nohighlight">
+\[
+  \infer{M \leadsto M'}{M \, N \leadsto M' \, N} \qquad
+  \infer{}{(\lambda x. M) \, N \leadsto M[N /x]}
+\]</div>
+</section>
+<section id="churchevo-kodiranje">
+<h2>Churchevo kodiranje<a class="headerlink" href="#churchevo-kodiranje" title="Permalink to this heading">#</a></h2>
+<p>Izkaže se, da lahko s pomočjo funkcij predstavimo tudi ostale vrednosti, ki jih običajno srečamo v programskih jezikih.</p>
+<section id="naravna-stevila">
+<h3>Naravna števila<a class="headerlink" href="#naravna-stevila" title="Permalink to this heading">#</a></h3>
+<p>Na primer naravno število <span class="math notranslate nohighlight">\(n\)</span> lahko predstavimo s funkcijo <span class="math notranslate nohighlight">\(\intsym{n}\)</span>, ki svoj prvi argument <span class="math notranslate nohighlight">\(n\)</span>-krat uporabi na svojem drugem argumentu:</p>
+<div class="math notranslate nohighlight">
+\[
+  \intsym{n} := \lambda f. \lambda x. \underbrace{f(\cdots( f}_n \, x) \cdots)
+\]</div>
+<p>Na primer <span class="math notranslate nohighlight">\(\intsym{3} = \lambda f. \lambda x. f (f (f x))\)</span>. Iz takih funkcij hitro dobimo tudi druge. Na primer, če <span class="math notranslate nohighlight">\(f\)</span> uporabimo <span class="math notranslate nohighlight">\(n\)</span>-krat na <span class="math notranslate nohighlight">\(f \, x\)</span>, smo v resnici <span class="math notranslate nohighlight">\((n + 1)\)</span>-krat uporabili <span class="math notranslate nohighlight">\(f\)</span> na <span class="math notranslate nohighlight">\(x\)</span>. Torej lahko naslednika definiramo kot</p>
+<div class="math notranslate nohighlight">
+\[
+  succ := \lambda n. \lambda f. \lambda x. n \, f \, (f \, x)
+\]</div>
+<p>lahko pa tudi kot</p>
+<div class="math notranslate nohighlight">
+\[
+  succ' := \lambda n. \lambda f. \lambda x. f (n \, f \, x)
+\]</div>
+<p>da najprej <span class="math notranslate nohighlight">\(f\)</span> uporabimo <span class="math notranslate nohighlight">\(n\)</span>-krat na <span class="math notranslate nohighlight">\(x\)</span>, nato pa na vsem skupaj še enkrat uporabimo <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Podobno lahko definiramo tudi seštevanje in množenje:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+  plus &amp;:= \lambda m. \lambda n. \lambda f. \lambda x. m \, f \, (n \, f \, x) \\
+  times &amp;:= \lambda m. \lambda n. \lambda f. \lambda x. m \, (n \, f) \, x
+\end{align*}
+\end{split}\]</div>
+<p>Pri seštevanju <span class="math notranslate nohighlight">\(f\)</span> na <span class="math notranslate nohighlight">\(x\)</span> najprej uporabimo <span class="math notranslate nohighlight">\(n\)</span>-krat, nato pa še <span class="math notranslate nohighlight">\(m\)</span>-krat. Pri množenju pa <span class="math notranslate nohighlight">\(m\)</span>-krat uporabimo <span class="math notranslate nohighlight">\(n\)</span>-krat <span class="math notranslate nohighlight">\(f\)</span> na <span class="math notranslate nohighlight">\(x\)</span>. Predstavitev predhodnika je <a class="reference external" href="https://en.wikipedia.org/wiki/Church_encoding#Derivation_of_predecessor_function">bolj zahtevna</a>.</p>
+</section>
+<section id="logicne-vrednosti">
+<h3>Logične vrednosti<a class="headerlink" href="#logicne-vrednosti" title="Permalink to this heading">#</a></h3>
+<p>Logični vrednosti predstavimo s funkcijama, ki vzameta dva argumenta, vrneta pa prvega oziroma drugega:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+  true &amp;:= \lambda x. \lambda y. x \\
+  false &amp;:= \lambda x. \lambda y. y
+\end{align*}
+\end{split}\]</div>
+<p>Predikat, ki ugotovi, ali je naravno število nič, lahko definiramo kot:</p>
+<div class="math notranslate nohighlight">
+\[
+  isZero := \lambda n. n \, (\lambda x. false) \, true
+\]</div>
+<p>Torej, <span class="math notranslate nohighlight">\(n\)</span>-krat na <span class="math notranslate nohighlight">\(true\)</span> uporabimo funkcijo, ki konstantno vrača <span class="math notranslate nohighlight">\(false\)</span>. Če je <span class="math notranslate nohighlight">\(n = 0\)</span>, dobimo <span class="math notranslate nohighlight">\(true\)</span>, sicer pa <span class="math notranslate nohighlight">\(false\)</span>. Če imamo logično vrednost ter dve možnosti, se med njima enostavno odločimo tako, da logično vrednost kar uporabimo.</p>
+<div class="math notranslate nohighlight">
+\[
+  ifThenElse := \lambda b. \lambda x. \lambda y. (b x) y
+\]</div>
+</section>
+<section id="rekurzija">
+<h3>Rekurzija<a class="headerlink" href="#rekurzija" title="Permalink to this heading">#</a></h3>
+<p>Recimo, da bi radi definirali:</p>
+<div class="math notranslate nohighlight">
+\[
+  fact := \lambda n. ifThenElse (isZero \, n) \, \underline{1} \, (times \, n \, (fact \, (pred \, n)))
+\]</div>
+<p>Za razliko do prejšnjih definicij se ta ne sklicuje samo na poprej definirane izraze, temveč tudi sama nase. Ciklične definicije se lahko znebimo tako, da problem prevedemo na iskanje fiksne točke. Definirajmo:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Psi := \lambda f. \lambda n. ifThenElse (isZero \, n) \, \underline{1} \, (times \, n \, (f \, (pred \, n)))
+\]</div>
+<p>Vse je tako kot v definiciji <span class="math notranslate nohighlight">\(fact\)</span>, le da sprejmemo dodatni argument <span class="math notranslate nohighlight">\(f\)</span>, ki ga uporabimo na mestu rekurzivnega klica. Zdaj pa si želimo najti tako funkcijo <span class="math notranslate nohighlight">\(fact\)</span>, ki je enaka <span class="math notranslate nohighlight">\(\Psi \, fact\)</span>, torej fiksno točko funkcije (oz. funkcionala), ki jo predstavlja izraz <span class="math notranslate nohighlight">\(\Psi\)</span>.</p>
+<p>Pri izračunu fiksne točke si pomagamo z <em>Y-kombinatorjem</em>:</p>
+<div class="math notranslate nohighlight">
+\[
+  Y ::= \lambda f. (\lambda x. \lambda y. f \, (x \, x) \, y) \, (\lambda x. \lambda y. f \, (x \, x) \, y)
+\]</div>
+<p>Definicija Y-kombinatorja je malo nenavadna, zato si najprej oglejmo, kako se izvaja izraz</p>
+<div class="math notranslate nohighlight">
+\[
+  \Omega ::= (\lambda x. x \, x) \, (\lambda x. x \, x)
+\]</div>
+<p>Da ne bo zmešnjave, pred tem v drugi abstrakciji preimenujmo <span class="math notranslate nohighlight">\(x\)</span> v <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{align*}
+    \Omega
+      &amp;= (\lambda x. x \, x) \, (\lambda x. x \, x) \\
+      &amp;= (\lambda x. x \, x) \, (\lambda y. y \, y) \\
+      &amp;\leadsto (x \, x)[(\lambda y. y \, y) / x] \\
+      &amp;= (\lambda y. y \, y) \, (\lambda y. y \, y) \\
+      &amp;= \Omega
+  \end{align*}
+\end{split}\]</div>
+<p>Velja torej <span class="math notranslate nohighlight">\(\Omega \leadsto \Omega\)</span>, zato je <span class="math notranslate nohighlight">\(\Omega\)</span> divergenten izraz, ki v nedogled dela korak nazaj vase. Če pa v vsak del izraza <span class="math notranslate nohighlight">\(\Omega\)</span> vrinemo <span class="math notranslate nohighlight">\(\Psi\)</span>, pa velja:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{align*}
+    \Omega'
+      &amp;= (\lambda x. \Psi (x \, x)) \, (\lambda x. \Psi (x \, x)) \\
+      &amp;= (\lambda x. \Psi (x \, x)) \, (\lambda y. \Psi (y \, y)) \\
+      &amp;\leadsto (\Psi (x \, x))[(\lambda y. \Psi (y \, y)) / x] \\
+      &amp;= \Psi ((\lambda y. \Psi (y \, y)) \, (\lambda y. \Psi y \, y)) \\
+      &amp;= \Psi \, \Omega'
+  \end{align*}
+\end{split}\]</div>
+<p>Dobili smo izraz, ki intuitivno predstavlja fiksno točko <span class="math notranslate nohighlight">\(\Psi\)</span>, vendar ga ne moremo uporabiti v izračunih, saj njegov izračun divergira. Ker bo naša fiksna točka funkcija, vsak izraz <span class="math notranslate nohighlight">\(M\)</span>, ki predstavlja funkcijo, pa lahko zamenjamo z ekvivalentnim izrazom <span class="math notranslate nohighlight">\(\lambda x. M \, x\)</span>, ki se ne bo izvajal, dokler ga ne bomo uporabili na argumentu, nas to pripelje do končne oblike, na kateri nato le še <span class="math notranslate nohighlight">\(\Psi\)</span> pretvorimo v parameter:</p>
+<div class="math notranslate nohighlight">
+\[
+  Y ::= \lambda \psi. (\lambda x. \lambda y. \psi \, (x \, x) \, y) \, (\lambda x. \lambda y. \psi \, (x \, x) \, y)
+\]</div>
+<p>Poglejmo, zakaj <span class="math notranslate nohighlight">\(Y \Psi\)</span> zares računa fakulteto.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{align*}
+    Y \, \Psi
+      &amp;\leadsto (\lambda x. \lambda y. \Psi \, (x \, x) \, y) \, (\lambda x. \lambda y. \Psi \, (x \, x) \, y) \\
+      &amp;\leadsto (\lambda y. \Psi \, (x \, x) \, y)[(\lambda x. \lambda y. \Psi \, (x \, x) \, y) / x] \\
+      &amp;= (\lambda y. \Psi \, ((\lambda x. \lambda y. \Psi \, (x \, x) \, y) \, (\lambda x. \lambda y. \Psi \, (x \, x) \, y)) \, y) \\
+      &amp;= \lambda y. \Psi \, (Y \, \Psi) \, y
+  \end{align*}
+\end{split}\]</div>
+<p>Na tej točki se izvajanje ustavi, saj smo dobili funkcijo. Če jo uporabimo na številu <span class="math notranslate nohighlight">\(m\)</span>, dobimo</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{align*}
+    (Y \, \Psi) \, m
+      &amp;\leadsto^* 
+      (\lambda y. \Psi \, (Y \, \Psi) \, y) \, m \\
+      &amp;\leadsto \Psi \, (Y \, \Psi) \, m \\
+      &amp;= (\lambda f. \lambda n. ifThenElse (isZero \, n) \, \underline{1} \, (times \, n \, (f \, (pred \, n)))) \, (Y \, \Psi) \, m \\
+      &amp;\leadsto (\lambda n. ifThenElse (isZero \, n) \, \underline{1} \, (times \, n \, ((Y \, \Psi) \, (pred \, n)))) \, m \\
+      &amp;\leadsto ifThenElse (isZero \, m) \, \underline{1} \, (times \, m \, ((Y \, \Psi) \, (pred \, m)))
+  \end{align*}
+\end{split}\]</div>
+<p>Sedaj je izvajanje odvisno od vrednosti <span class="math notranslate nohighlight">\(m\)</span>, ampak vidimo lahko, da na mestu rekurzivnega klica že čaka <span class="math notranslate nohighlight">\((Y \, \Psi) \, (pred \, m)\)</span>, kar je ravno to, kar potrebujemo.</p>
+</section>
+</section>
+<section id="vaje">
+<h2>Vaje<a class="headerlink" href="#vaje" title="Permalink to this heading">#</a></h2>
+<section id="naloga-1">
+<h3>Naloga 1<a class="headerlink" href="#naloga-1" title="Permalink to this heading">#</a></h3>
+<p>Dopolnite lambda račun s celimi števili <u><code class="docutils literal notranslate"><span class="pre">n</span></code></u> in seštevanjem <code class="docutils literal notranslate"><span class="pre">e1</span> <span class="pre">+</span> <span class="pre">e2</span></code>.</p>
+<ul class="simple">
+<li><p>Dopolnite pravila za leno in neučakano izvajanje velikih in malih korakov. Komentirajte, kje se pojavijo ključne razlike.</p></li>
+</ul>
+</section>
+<section id="naloga-2">
+<h3>Naloga 2<a class="headerlink" href="#naloga-2" title="Permalink to this heading">#</a></h3>
+<p>Izračunajte spodnje izraze v lambda računu. Jasno označite korake izvajanja pri vsakem.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(\y</span> <span class="pre">-&gt;</span> <span class="pre">(\x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y))</span> <span class="pre">2</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(\y</span> <span class="pre">-&gt;</span> <span class="pre">(\x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">x))</span> <span class="pre">2</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(\x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">x)</span> <span class="pre">(\x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">x)</span></code></p></li>
+</ul>
+</section>
+<section id="naloga-3">
+<h3>Naloga 3<a class="headerlink" href="#naloga-3" title="Permalink to this heading">#</a></h3>
+<p>Razložite kaj naredijo naslednje funkcije za Churchova števila</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\n</span> <span class="pre">f</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">f</span> <span class="pre">(n</span> <span class="pre">f</span> <span class="pre">z)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\n</span> <span class="pre">f</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">n</span> <span class="pre">f</span> <span class="pre">(f</span> <span class="pre">z)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\m</span> <span class="pre">n</span> <span class="pre">f</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">m</span> <span class="pre">f</span> <span class="pre">(n</span> <span class="pre">f</span> <span class="pre">x)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\m</span> <span class="pre">n</span> <span class="pre">f</span> <span class="pre">z</span> <span class="pre">-&gt;</span> <span class="pre">m</span> <span class="pre">(n</span> <span class="pre">f)</span> <span class="pre">z</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\m</span> <span class="pre">n</span> <span class="pre">-&gt;</span> <span class="pre">n</span> <span class="pre">m</span></code></p></li>
+</ul>
+</section>
+<section id="naloga-4">
+<h3>Naloga 4<a class="headerlink" href="#naloga-4" title="Permalink to this heading">#</a></h3>
+<p>Uporabite Churchovo kodiranje za predstavitev seznamov kot aplikacije <code class="docutils literal notranslate"><span class="pre">fold</span></code> na tem seznamu.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04-metateorija-programskih-jezikov.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Metateorija programskih jezikov</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06-tipi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tipi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sintaksa">Sintaksa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operacijska-semantika">Operacijska semantika</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#churchevo-kodiranje">Churchevo kodiranje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naravna-stevila">Naravna števila</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logicne-vrednosti">Logične vrednosti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rekurzija">Rekurzija</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vaje">Vaje</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-1">Naloga 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-2">Naloga 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-3">Naloga 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naloga-4">Naloga 4</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

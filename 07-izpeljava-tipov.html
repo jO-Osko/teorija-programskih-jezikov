@@ -1,0 +1,862 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Izpeljava tipov &#8212; Teorija programskih jezikov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"intsym": ["\\underline{#1}", 1], "kwd": ["\\mathbf{#1}", 1], "kwdpre": ["\\kwd{#1}\\;", 1], "kwdmid": ["\\;\\kwd{#1}\\;", 1], "kwdpost": ["\\;\\kwd{#1}", 1], "true": "\\kwd{true}", "false": "\\kwd{false}", "ifthenelse": ["\\kwdpre{if} #1 \\kwdmid{then} #2 \\kwdmid{else} #3", 3], "whiledo": ["\\kwdpre{while} #1 \\kwdmid{do} #2", 2], "skip": "\\kwd{skip}", "ttt": "t\\!t", "fff": "f\\!\\!f", "infer": ["\\displaystyle{\\frac{#1}{#2}}", 2], "boolty": "\\kwd{bool}", "intty": "\\kwd{int}", "eqs": "\\mathcal{E}", "ctxt": "\\mathcal{C}", "itp": ["[\\![ #1 ]\\!]", 1], "return": "\\kwdpre{return}", "letin": ["\\kwdpre{let} #1 \\kwdmid{in}", 1], "bind": "\\mathop{>\\!\\!\\!>\\!\\!\\!=}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07-izpeljava-tipov';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Denotacijska semantika" href="10-denotacijska-semantika.html" />
+    <link rel="prev" title="Tipi" href="06-tipi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Teorija programskih jezikov</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Teorija programskih jezikov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Osnove</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-praksa-programskih-jezikov.html">Praksa programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-indukcija.html">Indukcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Metateorija</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-metateorija-programskih-jezikov.html">Metateorija programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-lambda-racun.html">λ-račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-tipi.html">Tipi</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Izpeljava tipov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Denotacijska semantika</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-denotacijska-semantika.html">Denotacijska semantika</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-domene.html">Domene</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Učinki</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08-racunski-ucinki.html">Računski učinki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-monade.html">Monade</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/matijapretnar/teorija-programskih-jezikov/zapiski?urlpath=tree/07-izpeljava-tipov.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/07-izpeljava-tipov.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="_sources/07-izpeljava-tipov.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Izpeljava tipov</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer">Primer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavljanje-enacb">Nastavljanje enačb</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resevanje-enacb">Reševanje enačb</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastnosti-hindley-milnerjevega-algoritma">Lastnosti Hindley-Milnerjevega algoritma</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-nastavljanja-enacb">Pravilnost nastavljanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-resevanja-enacb">Pravilnost reševanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polnost-nastavljanja-enacb">Polnost nastavljanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polnost-resevanja-enacb">Polnost reševanja enačb</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="izpeljava-tipov">
+<h1>Izpeljava tipov<a class="headerlink" href="#izpeljava-tipov" title="Permalink to this heading">#</a></h1>
+<p>Videli smo, da za izraze, ki jim lahko priredimo tip, velja izrek o varnosti, kmalu pa bomo videli, da jih lahko interpretiramo z obstoječimi matematičnimi koncepti. Vendar je ročno prirejanje tipov zamudno, zato bi radi, da to namesto nas naredi računalnik. V ta namen bomo spoznali Hindley-Milnerjev algoritem, ki izpelje najbolj splošen tip, ki ga lahko priredimo izrazu.</p>
+<p>Hindley-Milnerjev algoritem poteka v dveh fazah. Najprej se rekurzivno sprehodi čez izraz in določi tipe tam, kjer je to očitno (na primer <span class="math notranslate nohighlight">\(\intsym{42}\)</span> bo tipa <span class="math notranslate nohighlight">\(\intty\)</span>), na preostalih mestih pa pusti neznanke, ki morajo zadoščati določenim enačbam. Na primer, vemo, da bo aplikacija <span class="math notranslate nohighlight">\(M \, N\)</span> nekega tipa <span class="math notranslate nohighlight">\(B\)</span>, če bo <span class="math notranslate nohighlight">\(M\)</span> tipa <span class="math notranslate nohighlight">\(A \to B\)</span> in bo <span class="math notranslate nohighlight">\(N\)</span> tipa <span class="math notranslate nohighlight">\(A\)</span>. V ta namen sintakso tipov razširimo z neznankami <span class="math notranslate nohighlight">\(\alpha\)</span>, ki jih zaradi razločevanja od že znanih spremenljivk <span class="math notranslate nohighlight">\(x\)</span> imenujemo <em>parametri</em>. V drugi fazi dobljene enačbe reši.</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+A, B &amp;::= \alpha
+        \mid \boolty
+        \mid \intty
+        \mid A \to B
+\end{align*}
+\]</div>
+<section id="primer">
+<h2>Primer<a class="headerlink" href="#primer" title="Permalink to this heading">#</a></h2>
+<p>Da dobimo intuicijo, poskusimo izpeljati tip izraza <span class="math notranslate nohighlight">\(M = \lambda f. \lambda x. f \, (f \, x)\)</span>. Ker je <span class="math notranslate nohighlight">\(M\)</span> funkcija, bo njen tip funkcijski. Problem lahko prevedemo na manjšega, če gremo izračunati tip telesa <span class="math notranslate nohighlight">\(\lambda x. f \, (f \, x)\)</span>, vendar moramo pred tem vedeti, kakšen tip bomo priredili spremenljivki <span class="math notranslate nohighlight">\(f\)</span>. Ker tega na tej točki še ne vemo, si izberemo nek svež parameter <span class="math notranslate nohighlight">\(\alpha\)</span>. Ko bomo izračunali, da je tip telesa recimo <span class="math notranslate nohighlight">\(B\)</span>, bomo vedeli tudi, da je tip celotnega izraza <span class="math notranslate nohighlight">\(M\)</span> enak <span class="math notranslate nohighlight">\(\alpha \to B\)</span>. Ker je tudi telo funkcija, podoben korak ponovimo še enkrat ter se ob dodatni predpostavki <span class="math notranslate nohighlight">\(x : \beta\)</span> lotimo računanja tipa <span class="math notranslate nohighlight">\(f \, (f \, x)\)</span>. Vse skupaj lahko predstavimo z drevesom</p>
+<div class="math notranslate nohighlight">
+\[
+  \infer{
+    \infer{
+      \infer{
+        \infer{ }{\Gamma \vdash f : \alpha} \qquad
+        \infer{
+          \infer{}{\Gamma \vdash f : \alpha} \qquad
+          \infer{}{\Gamma \vdash x : \beta} \qquad
+          (\alpha = \beta \to \gamma)
+        }{\Gamma \vdash f \, x : \gamma} \qquad
+        (\alpha = \gamma \to \delta)
+      }{
+        \underbrace{f : \alpha, x : \beta}_\Gamma \vdash f \, (f \, x) : \delta
+      }
+    }{
+      f : \alpha \vdash \lambda x. f \, (f \, x) : \beta \to \delta
+    }
+  }{
+    \vdash \lambda f. \lambda x. f \, (f \, x) : \alpha \to (\beta \to \delta)
+  }
+\]</div>
+<p>Na primer, ko želimo izračunati tip aplikacije <span class="math notranslate nohighlight">\(f \, x\)</span>, vemo, da zaradi predpostavk v kontekstu velja <span class="math notranslate nohighlight">\(f : \alpha\)</span> in <span class="math notranslate nohighlight">\(x : \beta\)</span>. Po drugi strani pa mora biti <span class="math notranslate nohighlight">\(f\)</span> funkcija, ki sprejema argumente tipa <span class="math notranslate nohighlight">\(\beta\)</span>, torej velja <span class="math notranslate nohighlight">\(\alpha = \beta \to \gamma\)</span> za nek neznani tip <span class="math notranslate nohighlight">\(\gamma\)</span>, ki je tudi tip aplikacije. Podobno lahko ob predpostavki <span class="math notranslate nohighlight">\(\alpha = \gamma \to \delta\)</span> izračunamo, da je tip telesa funkcije <span class="math notranslate nohighlight">\(f \, (f \, x)\)</span> enak <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
+<p>Če si ogledamo dobljeni enačbi <span class="math notranslate nohighlight">\(\alpha = \beta \to \gamma =  \gamma \to \delta\)</span> hitro vidimo še, da velja <span class="math notranslate nohighlight">\(\beta = \gamma = \delta\)</span>, zato je tip izraza <span class="math notranslate nohighlight">\(M\)</span> enak <span class="math notranslate nohighlight">\((\beta \to \beta) \to (\beta \to \beta)\)</span>, in to je tudi najbolj splošen tip.</p>
+</section>
+<section id="nastavljanje-enacb">
+<h2>Nastavljanje enačb<a class="headerlink" href="#nastavljanje-enacb" title="Permalink to this heading">#</a></h2>
+<p>Določanje sistema enačb opišemo z relacijo oblike <span class="math notranslate nohighlight">\(\Gamma \vdash M : A \mid \eqs\)</span>, ki pravi, da ima v kontekstu <span class="math notranslate nohighlight">\(\Gamma\)</span> izraz <span class="math notranslate nohighlight">\(M\)</span> tip <span class="math notranslate nohighlight">\(A\)</span>, če veljajo enačbe <span class="math notranslate nohighlight">\(\eqs\)</span>, predstavljene s seznamom oblike <span class="math notranslate nohighlight">\(A_1 = B_1, \dots, A_n = B_n\)</span>. Relacijo podamo s pravili, ki so podobna pravilom za izpeljavo tipov, le da je tip podizrazov v predpostavkah poljuben, enakosti med njimi pa zapišemo v <span class="math notranslate nohighlight">\(\eqs\)</span>. Na primer, pravilo za določanje tipa aplikacije je:</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+    \Gamma \vdash M_1 : A \to B \qquad
+    \Gamma \vdash M_2 : A
+}{
+    \Gamma \vdash M_1 \, M_2 : B
+}
+\]</div>
+<p>kjer vidimo, da je moral biti tip <span class="math notranslate nohighlight">\(M_1\)</span> funkcijski z domeno enako tipu od <span class="math notranslate nohighlight">\(M_2\)</span>. Pravilo za izpeljavo tipa pa je</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 \, M_2 : \alpha \mid A_1 = A_2 \to \alpha, \eqs_1, \eqs_2
+}
+\]</div>
+<p>kjer za podizraza predpostavimo poljubna tipa <span class="math notranslate nohighlight">\(A_1\)</span> in <span class="math notranslate nohighlight">\(A_2\)</span>, ujemanje med njima pa zapišemo v enačbo <span class="math notranslate nohighlight">\(A_1 = A_2 \to \alpha\)</span> v zaključku pravila. Poleg te enačbe bo morala vsaka rešitev zadostiti vsem enačbam <span class="math notranslate nohighlight">\(\eqs_1\)</span> in <span class="math notranslate nohighlight">\(\eqs_2\)</span>, ki jih ravno tako dodamo v zaključek.</p>
+<p>Relacijo <span class="math notranslate nohighlight">\(\Gamma \vdash M : A \mid \eqs\)</span> tako podamo s pravili:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\infer{
+    (x : A) ∈ \Gamma
+}{
+    \Gamma \vdash x : A \mid \emptyset
+} \qquad\\\infer{}{
+    \Gamma \vdash \true : \boolty \mid \emptyset
+} \qquad\\\begin{split}\infer{}{
+    \Gamma \vdash \false : \boolty \mid \emptyset
+} \\[2em]\end{split}\\\begin{split}\infer{
+    \Gamma \vdash M : A \mid \eqs \qquad
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash \ifthenelse{M}{M_1}{M_2} : A_1 \mid A = \boolty, A_1 = A_2, \eqs, \eqs_1, \eqs_2
+} \\[2em]\end{split}\\\infer{}{
+    \Gamma \vdash \intsym{n} : \intty \mid \emptyset
+} \qquad\\\begin{split}\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 + M_2 : \intty \mid A_1 = \intty, A_2 = \intty, \eqs_1, \eqs_2
+} \\[2em]\end{split}\\\begin{split}\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 * M_2 : \intty \mid A_1 = \intty, A_2 = \intty, \eqs_1, \eqs_2
+} \\[2em]\end{split}\\\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 &lt; M_2 : \boolty \mid A_1 = \intty, A_2 = \intty, \eqs_1, \eqs_2
+}\\\infer{
+    \Gamma, x : \alpha \vdash M : A \mid \eqs
+}{
+    \Gamma \vdash \lambda x. M : \alpha \to A \mid \eqs
+} \qquad\\\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 \, M_2 : \alpha \mid A_1 = A_2 \to \alpha, \eqs_1, \eqs_2
+}
+\end{aligned}\end{align} \]</div>
+<p>Pri tem upoštevamo, da morajo biti vsi parametri <span class="math notranslate nohighlight">\(\alpha\)</span> sveži, torej da jih poprej še nismo uporabili. Drevo izpeljave za izraz <span class="math notranslate nohighlight">\(\lambda f. \lambda x. f \, (f \, x)\)</span> od prej je natančneje torej:</p>
+<div class="math notranslate nohighlight">
+\[
+  \infer{
+    \infer{
+      \infer{
+        \infer{ }{\Gamma \vdash f : \alpha \mid \emptyset} \qquad
+        \infer{
+          \infer{}{\Gamma \vdash f : \alpha \mid \emptyset} \qquad
+          \infer{}{\Gamma \vdash x : \beta \mid \emptyset}
+        }{\Gamma \vdash f \, x : \gamma \mid \alpha = \beta \to \gamma}
+      }{
+        \underbrace{f : \alpha, x : \beta}_\Gamma \vdash f \, (f \, x) : \delta \mid \alpha = \gamma \to \delta, \alpha = \beta \to \gamma
+      }
+    }{
+      f : \alpha \vdash \lambda x. f \, (f \, x) : \beta \to \delta \mid \alpha = \gamma \to \delta, \alpha = \beta \to \gamma
+    }
+  }{
+    \vdash \lambda f. \lambda x. f \, (f \, x) : \alpha \to (\beta \to \delta) \mid \alpha = \gamma \to \delta, \alpha = \beta \to \gamma
+  }
+\]</div>
+<p>Ker pa v pravilih množico enačb <span class="math notranslate nohighlight">\(\eqs\)</span> le povečujemo, jo v praksi samo napišemo na stran in tako izpeljavo bolj ekonomično napišemo kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \infer{
+    \infer{
+      \infer{
+        \infer{ }{\Gamma \vdash f : \alpha} \qquad
+        \infer{
+          \infer{}{\Gamma \vdash f : \alpha} \qquad
+          \infer{}{\Gamma \vdash x : \beta}
+        }{\Gamma \vdash f \, x : \gamma}
+      }{
+        \underbrace{f : \alpha, x : \beta}_\Gamma \vdash f \, (f \, x) : \delta
+      }
+    }{
+      f : \alpha \vdash \lambda x. f \, (f \, x) : \beta \to \delta
+    }
+  }{
+    \vdash \lambda f. \lambda x. f \, (f \, x) : \alpha \to (\beta \to \delta)
+  }
+  \qquad
+  \begin{aligned}
+   \alpha &amp;= \gamma \to \delta \\
+   \alpha &amp;= \beta \to \gamma
+  \end{aligned}
+\end{split}\]</div>
+</section>
+<section id="resevanje-enacb">
+<h2>Reševanje enačb<a class="headerlink" href="#resevanje-enacb" title="Permalink to this heading">#</a></h2>
+<p>Rešitev sistema enačb bomo predstavili s <em>substitucijo</em> <span class="math notranslate nohighlight">\(\sigma = \alpha_1 \mapsto A_1, \ldots, \alpha_n \mapsto A_n\)</span>, ki pove, da je vrednost parametra <span class="math notranslate nohighlight">\(\alpha_i\)</span> enaka <span class="math notranslate nohighlight">\(A_i\)</span>. Dano substitucijo <span class="math notranslate nohighlight">\(\sigma\)</span> lahko uporabimo na poljubnem tipu <span class="math notranslate nohighlight">\(A\)</span>, da dobimo tip <span class="math notranslate nohighlight">\(\sigma(A)\)</span>, ki je rekurzivno definiran kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{align*}
+    \sigma(\alpha) &amp;= \begin{cases}
+      A &amp; (\alpha \mapsto A) \in \sigma \\
+      \alpha &amp; \text{sicer}
+    \end{cases} \\
+    \sigma(\boolty) &amp;= \boolty \\
+    \sigma(\intty) &amp;= \intty \\
+    \sigma(A \to B) &amp;= \sigma(A) \to \sigma(B)  
+  \end{align*}
+\end{split}\]</div>
+<p>Definiramo lahko tudi kompozitum <span class="math notranslate nohighlight">\(\sigma \circ \sigma'\)</span>, ki vse parametre <span class="math notranslate nohighlight">\(\alpha\)</span>, za katere obstaja <span class="math notranslate nohighlight">\((\alpha \mapsto A) \in \sigma'\)</span>, slika v <span class="math notranslate nohighlight">\(\sigma(A)\)</span>, vse preostale parametre pa tako kot <span class="math notranslate nohighlight">\(\sigma\)</span>. Hitro lahko preverimo, da velja <span class="math notranslate nohighlight">\((\alpha \mapsto A)(B) = B[A / \alpha]\)</span> ter <span class="math notranslate nohighlight">\((\sigma \circ \sigma')(A) = \sigma(\sigma'(A))\)</span>.</p>
+<p>Pravimo, da substitucija <span class="math notranslate nohighlight">\(\sigma\)</span> reši množico enačb <span class="math notranslate nohighlight">\(\eqs\)</span>, kar pišemo kot <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>, kadar sta za vsako enačbo <span class="math notranslate nohighlight">\((A = B) \in \eqs\)</span> tipa <span class="math notranslate nohighlight">\(\sigma(A)\)</span> in <span class="math notranslate nohighlight">\(\sigma(B)\)</span> enaka.</p>
+<p>Najbolj splošno rešitev množice enačb <span class="math notranslate nohighlight">\(\eqs\)</span> dobimo tako, da postopoma razrešujemo enačbe v njej. Če sta tipa v prvi enačbi že enaka, se je lahko znebimo. Če sta oba funkcijska, enačbo razbijemo na dve enačbi med domenama in kodomenama. Zadnji primer, kjer rešitev obstaja, pa je ta, da na eni strani nastopa parameter in je oblike <span class="math notranslate nohighlight">\(\alpha = A\)</span> (ali obratno). Načeloma to pomeni, da bomo <span class="math notranslate nohighlight">\(\alpha\)</span> substituirali z <span class="math notranslate nohighlight">\(A\)</span>, težavo imamo le, kadar <span class="math notranslate nohighlight">\(A\)</span> vsebuje <span class="math notranslate nohighlight">\(\alpha\)</span>. V tem primeru enačba ne more imeti rešitve. Formalno reševanje podamo z relacijo <span class="math notranslate nohighlight">\(\eqs \searrow \sigma\)</span>, podano s pravili:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\infer{}{\emptyset \searrow \emptyset} \qquad
+\infer{
+  \eqs \searrow \sigma
+}{
+  A = A, \eqs \searrow \sigma
+} \\[2em]
+\infer{
+  A_1 = B_1, A_2 = B_2, \eqs \searrow \sigma
+}{
+  A_1 \to A_2 = B_1 \to B_2, \eqs \searrow \sigma
+} \\[2em]
+\infer{
+  (\alpha \mapsto A)(\eqs) \searrow \sigma \qquad
+  \alpha \notin fv(A)
+}{
+  \alpha = A, \eqs \searrow (\alpha \mapsto \sigma(A)) \circ \sigma
+} \\[2em]
+\infer{
+  (\alpha \mapsto A)(\eqs) \searrow \sigma \qquad
+  \alpha \notin fv(A)
+}{
+  A = \alpha, \eqs \searrow (\alpha \mapsto \sigma(A)) \circ \sigma
+} \\
+\end{split}\]</div>
+<p>kjer je množica prostih parametrov <span class="math notranslate nohighlight">\(fv(A)\)</span> definirana kot</p>
+<div class="math notranslate nohighlight">
+\[
+fv(\alpha) = \{ \alpha \} \qquad fv(\boolty) = fv(\intty) = \emptyset \qquad fv(A \to B) = fv(A) \cup fv(B)
+\]</div>
+</section>
+<section id="lastnosti-hindley-milnerjevega-algoritma">
+<h2>Lastnosti Hindley-Milnerjevega algoritma<a class="headerlink" href="#lastnosti-hindley-milnerjevega-algoritma" title="Permalink to this heading">#</a></h2>
+<p>Da Hindley-Milnerjev algoritem res vrne najbolj splošen tip, pokažemo s sledečimi trditvami.</p>
+<section id="pravilnost-nastavljanja-enacb">
+<h3>Pravilnost nastavljanja enačb<a class="headerlink" href="#pravilnost-nastavljanja-enacb" title="Permalink to this heading">#</a></h3>
+<p>Najprej pokažemo, da vsaka rešitev dobljenih enačb res predstavlja veljavno prirejanje tipa.</p>
+<p><strong>Trditev.</strong> Če velja <span class="math notranslate nohighlight">\(\Gamma \vdash M : A \mid \eqs\)</span> in <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>, potem <span class="math notranslate nohighlight">\(\sigma(\Gamma) \vdash M : \sigma(A)\)</span>.</p>
+<p><strong>Dokaz.</strong> Z indukcijo na <span class="math notranslate nohighlight">\(\Gamma \vdash M : A \mid \eqs\)</span>. Za primer si oglejmo pravilo za aplikacijo</p>
+<div class="math notranslate nohighlight">
+\[\infer{
+    \Gamma \vdash M_1 : A_1 \mid \eqs_1 \qquad
+    \Gamma \vdash M_2 : A_2 \mid \eqs_2
+}{
+    \Gamma \vdash M_1 \, M_2 : \alpha \mid A_1 = A_2 \to \alpha, \eqs_1, \eqs_2
+}\]</div>
+<p>Če velja <span class="math notranslate nohighlight">\(\sigma \models A_1 = A_2 \to \alpha, \eqs_1, \eqs_2\)</span>, potem velja tudi <span class="math notranslate nohighlight">\(\sigma \models \eqs_1\)</span> in <span class="math notranslate nohighlight">\(\sigma \models \eqs_2\)</span>, saj gre za manjšo množico enačb. Po indukcijski predpostavki potem velja <span class="math notranslate nohighlight">\(\sigma(\Gamma) \vdash M_1 : \sigma(A_1)\)</span> in <span class="math notranslate nohighlight">\(\sigma(\Gamma) \vdash M_2 : \sigma(A_2)\)</span>. Hkrati velja <span class="math notranslate nohighlight">\(\sigma(A_1) = \sigma(A_2) \to \sigma(\alpha)\)</span>, zato velja <span class="math notranslate nohighlight">\(\sigma(\Gamma) \vdash M_1 : \sigma(\alpha) \to \sigma(A_2)\)</span>, zato lahko uporabimo pravilo za določanje tipa aplikacije, da dobimo</p>
+<div class="math notranslate nohighlight">
+\[\infer{
+    \sigma(\Gamma) \vdash M_1 : \sigma(A_2) \to \sigma(\alpha) \qquad
+    \sigma(\Gamma) \vdash M_2 : \sigma(A_2)
+}{
+    \sigma(\Gamma) \vdash M_1 \, M_2 : \sigma(\alpha)
+}\]</div>
+<p>kar je natanko to, kar smo želeli. ■</p>
+</section>
+<section id="pravilnost-resevanja-enacb">
+<h3>Pravilnost reševanja enačb<a class="headerlink" href="#pravilnost-resevanja-enacb" title="Permalink to this heading">#</a></h3>
+<p>Prav tako moramo pokazati pravilnost druge faze.</p>
+<p><strong>Trditev.</strong> Če velja <span class="math notranslate nohighlight">\(\eqs \searrow \sigma\)</span>, potem velja <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>.</p>
+<p><strong>Dokaz.</strong> Tudi tu uporabimo indukcijo na <span class="math notranslate nohighlight">\(\eqs \searrow \sigma\)</span>. Za primer vzemimo pravilo</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+  (\alpha \mapsto A)(\eqs) \searrow \sigma \qquad
+  \alpha \notin fv(A)
+}{
+  \alpha = A, \eqs \searrow (\alpha \mapsto \sigma(A)) \circ \sigma
+}
+\]</div>
+<p>Najprej se spomnimo, da velja <span class="math notranslate nohighlight">\((\alpha \mapsto A)(\eqs) = \eqs[A / \alpha]\)</span>. Ker v množici enačb <span class="math notranslate nohighlight">\(\eqs[A / \alpha]\)</span> parameter <span class="math notranslate nohighlight">\(\alpha\)</span> ne nastopa, lahko pokažemo, da tudi v <span class="math notranslate nohighlight">\(\sigma\)</span> ni omenjen, zato velja <span class="math notranslate nohighlight">\(\sigma(\alpha) = \alpha\)</span>.</p>
+<p>Tako v prvi enačbi na levi strani dobimo</p>
+<div class="math notranslate nohighlight">
+\[
+  ((\alpha \mapsto \sigma(A)) \circ \sigma)(\alpha) = (\alpha \mapsto \sigma(A))(\sigma(\alpha)) = (\alpha \mapsto \sigma(A))(\alpha) = \sigma(A)
+\]</div>
+<p>na desni strani pa</p>
+<div class="math notranslate nohighlight">
+\[
+  ((\alpha \mapsto \sigma(A)) \circ \sigma)(A) = (\alpha \mapsto \sigma(A))(\sigma(A)) = \sigma(A)
+\]</div>
+<p>saj <span class="math notranslate nohighlight">\(\alpha \notin fv(\sigma(A))\)</span>, ker <span class="math notranslate nohighlight">\(\alpha \notin fv(A)\)</span>, v substituciji <span class="math notranslate nohighlight">\(\alpha\)</span> pa se prav tako ne pojavi.</p>
+<p>Dokazati moramo še <span class="math notranslate nohighlight">\((\alpha \mapsto \sigma(A)) \circ \sigma \models \eqs\)</span>. Vzemimo torej poljubno enačbo <span class="math notranslate nohighlight">\(A_1 = A_2 \in \eqs\)</span> in pokažimo, da velja <span class="math notranslate nohighlight">\((\alpha \mapsto \sigma(A))(\sigma(A_1)) = (\alpha \mapsto \sigma(A))(\sigma(A_2))\)</span> oziroma <span class="math notranslate nohighlight">\(\sigma(A_1)[\sigma(A) / \alpha] = \sigma(A_2)[\sigma(A) / \alpha]\)</span>. Po indukcijski predpostavki velja <span class="math notranslate nohighlight">\(\sigma \models (\alpha \mapsto A)(\eqs)\)</span>, iz česar sledi <span class="math notranslate nohighlight">\(\sigma(A_1[A / \alpha]) = \sigma(A_2[A / \alpha])\)</span>, kar je natanko to, kar moramo pokazati, saj velja <span class="math notranslate nohighlight">\(\sigma(A_1)[\sigma(A) / \alpha] = \sigma(A_1[A / \alpha])\)</span> in podobno za <span class="math notranslate nohighlight">\(A_2\)</span>. ■</p>
+</section>
+<section id="polnost-nastavljanja-enacb">
+<h3>Polnost nastavljanja enačb<a class="headerlink" href="#polnost-nastavljanja-enacb" title="Permalink to this heading">#</a></h3>
+<p>Pokazati moramo še, da so nastavljene enačbe najbolj splošne, torej da lahko vsak tip, ki bi ga lahko priredili danemu izrazu, dobimo kot konkretno substitucijo izpeljanega tipa. Najprej pokažemo, da za vsak izraz s tipom lahko nastavimo sistem enačb:</p>
+<p><strong>Trditev.</strong> Naj bo <span class="math notranslate nohighlight">\(\Gamma \vdash M : A\)</span> Tedaj obstaja <span class="math notranslate nohighlight">\(A'\)</span> in <span class="math notranslate nohighlight">\(\eqs\)</span>, da velja <span class="math notranslate nohighlight">\(\Gamma \vdash M : A' \mid \eqs\)</span>.</p>
+<p><strong>Dokaz.</strong> Dokaz je rutinska indukcija, saj so pravila za <span class="math notranslate nohighlight">\(\Gamma \vdash M : A' \mid \eqs\)</span> tako splošna, da jih lahko uporabimo na poljubnem izrazu. Paziti moramo le na to, da se vse proste spremenljivke pojavijo v <span class="math notranslate nohighlight">\(\Gamma\)</span>, kar pa nam zagotavlja predpostavka <span class="math notranslate nohighlight">\(\Gamma \vdash M : A\)</span>. ■</p>
+<p>Ko vemo, da enačbe lahko vedno nastavimo, pa lahko povemo tudi, da so najbolj splošne:</p>
+<p><strong>Trditev.</strong> Naj bo <span class="math notranslate nohighlight">\(\Gamma \vdash M : A \mid \eqs\)</span>. Tedaj za poljuben tip <span class="math notranslate nohighlight">\(A'\)</span>, za katerega velja <span class="math notranslate nohighlight">\(\Gamma \vdash M : A'\)</span>, obstaja <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>, da velja <span class="math notranslate nohighlight">\(\sigma(A) = A'\)</span>.</p>
+<p>Dokaza ne bomo navajali, ker je bolj tehničen, najdete pa ga lahko v razdelku 22.5 učbenika <a class="reference external" href="https://www.cis.upenn.edu/~bcpierce/tapl/">Types and programming languages</a>.</p>
+</section>
+<section id="polnost-resevanja-enacb">
+<h3>Polnost reševanja enačb<a class="headerlink" href="#polnost-resevanja-enacb" title="Permalink to this heading">#</a></h3>
+<p>Tudi v drugi fazi moramo pokazati, da je najdena rešitev res najbolj splošna. Tudi tu najprej pokažemo, da rešitev vedno obstaja.</p>
+<p><strong>Trditev.</strong> Če velja <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>, tedaj obstaja <span class="math notranslate nohighlight">\(\sigma'\)</span>, da velja <span class="math notranslate nohighlight">\(\eqs \models \sigma'\)</span>.</p>
+<p><strong>Dokaz.</strong> Dokaz poteka z malo bolj zapleteno indukcijo, saj ni očitno, katera stvar se v predpostavkah manjša. Na primer, včasih se enačb znebimo, včasih zamenjamo eno enačbo z več novimi, vendar z manjšimi tipi, včasih pa tipe povečamo, vendar se znebimo parametrov. Vse to zajamemo z leksikografsko urejenostjo med sistemi enačb.</p>
+<p>Definirajmo velikost <span class="math notranslate nohighlight">\(|A|\)</span> tipa <span class="math notranslate nohighlight">\(A\)</span> kot</p>
+<div class="math notranslate nohighlight">
+\[
+  |\alpha| = |\boolty| = |\intty| = 1 \qquad
+  |A \to B| = 1 + |A| + |B|
+\]</div>
+<p>Velikost in proste parametre enačb <span class="math notranslate nohighlight">\(\eqs\)</span> pa lahko definiramo kot</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+  |\eqs| &amp;= \sum_{(A_1 = A_2) \in \eqs} (|A_1| + |A_2|) \\
+  fv(\eqs) &amp;= \bigcup_{(A_1 = A_2) \in \eqs} fv(A_1) \cup fv(A_2)
+\end{align*}
+\end{split}\]</div>
+<p>Vzemimo zdaj enačbe <span class="math notranslate nohighlight">\(\eqs\)</span> in nadaljujmo z leksikogafsko indukcijo na <span class="math notranslate nohighlight">\((|fv(\eqs)|, |\eqs|)\)</span>. Torej, na vsakem koraku se bo število prostih parametrov zmanjšalo, ali pa bo ostalo enako, zmanjšala pa se bo skupna velikost vseh tipov v enačbah.</p>
+<p>Če je <span class="math notranslate nohighlight">\(\eqs = \emptyset\)</span>, velja <span class="math notranslate nohighlight">\(\eqs \searrow \emptyset\)</span>. V nasprotnem primeru imamo <span class="math notranslate nohighlight">\(\eqs = (A_1 = A_2, \eqs')\)</span>, kjer velja <span class="math notranslate nohighlight">\(\sigma \models \eqs'\)</span> in <span class="math notranslate nohighlight">\(\sigma(A_1) = \sigma(A_2)\)</span>. Poglejmo, v kakšnih primerih se slednje lahko zgodi.</p>
+<p>Če je <span class="math notranslate nohighlight">\(A_1 = A_2\)</span>, lahko uporabimo pravilo</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+  \eqs' \searrow \sigma'
+}{
+  A_1 = A_1, \eqs' \searrow \sigma'
+}\]</div>
+<p>saj po indukciji obstaja <span class="math notranslate nohighlight">\(\eqs' \searrow \sigma'\)</span>.</p>
+<p>Če pa je <span class="math notranslate nohighlight">\(A_1 \ne A_2\)</span>, hkrati pa <span class="math notranslate nohighlight">\(\sigma(A_1) = \sigma(A_2)\)</span>, pa morata biti <span class="math notranslate nohighlight">\(A_1\)</span> in <span class="math notranslate nohighlight">\(A_2\)</span> vsaj kompatibilne oblike. Torej sta oba funkcijska tipa, ali pa je eden od njiju parameter.</p>
+<p>V prvem primeru je <span class="math notranslate nohighlight">\(A_1 = A_1' \to A_1''\)</span> in <span class="math notranslate nohighlight">\(A_2 = A_2' \to A_2''\)</span>, zato definiramo <span class="math notranslate nohighlight">\(\eqs'' = (A_1' = A_2', A_1'' = A_2'', \eqs')\)</span>. Ker velja <span class="math notranslate nohighlight">\(fv(\eqs'') = fv(\eqs)\)</span> in <span class="math notranslate nohighlight">\(|\eqs''| &lt; |\eqs|\)</span>, hkrati pa velja <span class="math notranslate nohighlight">\(\sigma \models \eqs''\)</span>, po indukciji obstaja rešitev <span class="math notranslate nohighlight">\(\eqs'' \searrow \sigma'\)</span>, zato lahko uporabimo pravilo</p>
+<div class="math notranslate nohighlight">
+\[\infer{
+  \underbrace{A_1 = B_1, A_2 = B_2, \eqs'}_{\eqs''} \searrow \sigma'
+}{
+  \underbrace{A_1 \to A_2 = B_1 \to B_2, \eqs'}_{\eqs} \searrow \sigma'
+}
+\]</div>
+<p>V drugem primeru pa najprej poglejmo možnost, da je parameter na levi strani, torej <span class="math notranslate nohighlight">\(A_1 = \alpha\)</span>. Naj bo <span class="math notranslate nohighlight">\(\eqs'' = \eqs[A_2 / \alpha]\)</span>. Tedaj je <span class="math notranslate nohighlight">\(|fv(\eqs'')| &lt; |fv(\eqs)|\)</span>, saj smo se <span class="math notranslate nohighlight">\(\alpha\)</span> znebili, novih parametrov pa nismo dodajali, saj je <span class="math notranslate nohighlight">\(fv(A_2) \subseteq fv(\eqs)\)</span>. Če velja <span class="math notranslate nohighlight">\(\sigma \models \eqs\)</span>, potem velja tudi <span class="math notranslate nohighlight">\(\sigma \models \eqs[A_2 / \alpha]\)</span>, saj smo s substitucijo kvečjemu izenačili več tipov. Torej po indukciji obstaja rešitev <span class="math notranslate nohighlight">\(\eqs[A_2 / \alpha] \searrow \sigma'\)</span>. Hkrati mora veljati <span class="math notranslate nohighlight">\(\alpha \notin fv(A_2)\)</span>, saj sicer ne more veljati <span class="math notranslate nohighlight">\(\sigma(\alpha) = \sigma(A_2)\)</span>, ker bo desna stran striktno večja od leve. Tako so izpolnjene vse predpostavke, da uporabimo drugo pravilo:</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+  (\alpha \mapsto A_2)(\eqs) \searrow \sigma' \qquad
+  \alpha \notin fv(A_2)
+}{
+  \alpha = A_2, \eqs \searrow (\alpha \mapsto \sigma(A_2)) \circ \sigma
+}
+\]</div>
+<p>Če je parameter na desni strani, ravnamo simetrično. ■</p>
+<p>Ko vemo, da rešitev obstaja, pokažemo še, da je najbolj splošna.</p>
+<p><strong>Trditev.</strong> Če velja <span class="math notranslate nohighlight">\(\eqs \searrow \sigma\)</span>, tedaj za poljubno <span class="math notranslate nohighlight">\(\sigma' \models \eqs\)</span> obstaja <span class="math notranslate nohighlight">\(\sigma''\)</span>, da velja <span class="math notranslate nohighlight">\(\sigma' = \sigma'' \circ \sigma\)</span>.</p>
+<p><strong>Dokaz.</strong> Dokaz poteka z indukcijo na <span class="math notranslate nohighlight">\(\eqs \searrow \sigma\)</span>. Za primer vzemimo pravilo</p>
+<div class="math notranslate nohighlight">
+\[
+\infer{
+  A_1 = B_1, A_2 = B_2, \eqs \searrow \sigma
+}{
+  A_1 \to A_2 = B_1 \to B_2, \eqs \searrow \sigma
+}.
+\]</div>
+<p>Naj velja <span class="math notranslate nohighlight">\(\sigma' \models A_1 \to A_2 = B_1 \to B_2, \eqs\)</span>. Tedaj velja tudi <span class="math notranslate nohighlight">\(\sigma' \models A_1 = B_1, A_2 = B_2, \eqs\)</span> zato po indukcijski predpostavki obstaja <span class="math notranslate nohighlight">\(\sigma''\)</span>, da velja <span class="math notranslate nohighlight">\(\sigma' = \sigma'' \circ \sigma\)</span>, kar je natanko to, kar smo želeli pokazati.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "ocaml-jupyter"
+        },
+        kernelOptions: {
+            name: "ocaml-jupyter",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ocaml-jupyter'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06-tipi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tipi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="10-denotacijska-semantika.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Denotacijska semantika</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer">Primer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nastavljanje-enacb">Nastavljanje enačb</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resevanje-enacb">Reševanje enačb</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lastnosti-hindley-milnerjevega-algoritma">Lastnosti Hindley-Milnerjevega algoritma</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-nastavljanja-enacb">Pravilnost nastavljanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pravilnost-resevanja-enacb">Pravilnost reševanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polnost-nastavljanja-enacb">Polnost nastavljanja enačb</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polnost-resevanja-enacb">Polnost reševanja enačb</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

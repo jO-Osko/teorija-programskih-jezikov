@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Monade &#8212; Teorija programskih jezikov</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"intsym": ["\\underline{#1}", 1], "kwd": ["\\mathbf{#1}", 1], "kwdpre": ["\\kwd{#1}\\;", 1], "kwdmid": ["\\;\\kwd{#1}\\;", 1], "kwdpost": ["\\;\\kwd{#1}", 1], "true": "\\kwd{true}", "false": "\\kwd{false}", "ifthenelse": ["\\kwdpre{if} #1 \\kwdmid{then} #2 \\kwdmid{else} #3", 3], "whiledo": ["\\kwdpre{while} #1 \\kwdmid{do} #2", 2], "skip": "\\kwd{skip}", "ttt": "t\\!t", "fff": "f\\!\\!f", "infer": ["\\displaystyle{\\frac{#1}{#2}}", 2], "boolty": "\\kwd{bool}", "intty": "\\kwd{int}", "eqs": "\\mathcal{E}", "ctxt": "\\mathcal{C}", "itp": ["[\\![ #1 ]\\!]", 1], "return": "\\kwdpre{return}", "letin": ["\\kwdpre{let} #1 \\kwdmid{in}", 1], "bind": "\\mathop{>\\!\\!\\!>\\!\\!\\!=}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '12-monade';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Računski učinki" href="08-racunski-ucinki.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="00-uvod.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Teorija programskih jezikov</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="00-uvod.html">
+                    Teorija programskih jezikov
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Osnove</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-praksa-programskih-jezikov.html">Praksa programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-indukcija.html">Indukcija</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Metateorija</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="04-metateorija-programskih-jezikov.html">Metateorija programskih jezikov</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-lambda-racun.html">λ-račun</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-tipi.html">Tipi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-izpeljava-tipov.html">Izpeljava tipov</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Denotacijska semantika</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10-denotacijska-semantika.html">Denotacijska semantika</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-domene.html">Domene</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Učinki</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="08-racunski-ucinki.html">Računski učinki</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Monade</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/12-monade.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monade</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-monad">Definicija monad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primeri-monad">Primeri monad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trivialna-monada">Trivialna monada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izjeme">Izjeme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pomnilnik">Pomnilnik</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="monade">
+<h1>Monade<a class="headerlink" href="#monade" title="Permalink to this heading">#</a></h1>
+<p>Videli smo, da je operacijska semantika računskih učinkov precej raznolika. Pri denotacijski semantiki ni nič drugače. Recimo, da tip <span class="math notranslate nohighlight">\(A\)</span> predstavimo z množico (ali domeno, čeprav zaradi enostavnosti delajmo z množicami) vrednosti <span class="math notranslate nohighlight">\(\itp{A}\)</span>. Programe, ki računajo vrednosti tipa <span class="math notranslate nohighlight">\(A\)</span> smo do sedaj predstavljali s funkcijami, ki so slikale v <span class="math notranslate nohighlight">\(\itp{A}\)</span>. A če dodamo učinke, taka predstavitev ni več dovolj dobra.</p>
+<ul class="simple">
+<li><p>Če želimo v programu podpirati izjeme, bo njegova interpretacija morala razločevati programe, ki vračajo vrednosti iz <span class="math notranslate nohighlight">\(A\)</span> od tistih, ki sprožajo izjeme. Tako bi bila ustreznejša kodomena funkcij <span class="math notranslate nohighlight">\(\itp{A} + \mathbb{E}\)</span>.</p></li>
+<li><p>Če program izpisuje znake iz množice <span class="math notranslate nohighlight">\(O\)</span>, moramo poleg rezultata vrniti še seznam izpisanih znakov, torej bi bila kodomena <span class="math notranslate nohighlight">\(\itp{A} \times O^*\)</span>.</p></li>
+<li><p>Če naš program lahko bere in piše po pomnilniku z množico možnih stanj <span class="math notranslate nohighlight">\(S\)</span>, bo interpretacija programa odvisna od začetnega stanja, hkrati pa bo vrnila novo, spremenjeno stanje. Boljša interpretacija bi bila <span class="math notranslate nohighlight">\((\itp{A} \times S)^S\)</span>.</p></li>
+<li><p>Če je izvajanje programa nedeterministično in gre lahko po različnih poteh, bi bilo bolje, če bi rezultat predstavili z množico možnih vrnjenih vrednosti, torej kodomeno <span class="math notranslate nohighlight">\(\mathcal{P}(\itp{A})\)</span>.</p></li>
+</ul>
+<p>Opazimo, da so vsi zgornji primeri kodomen oblike <span class="math notranslate nohighlight">\(T \itp{A}\)</span>, kjer je <span class="math notranslate nohighlight">\(T\)</span> neka konstrukcija, ki množico <span class="math notranslate nohighlight">\(X\)</span> slika v množico <span class="math notranslate nohighlight">\(T X\)</span>. Poleg tega za interpretacijo programov, ki povzročajo učinke, potrebujemo še dve operaciji:</p>
+<ul class="simple">
+<li><p>Če imamo vrednost tipa <span class="math notranslate nohighlight">\(A\)</span>, moramo znati predstaviti tudi program, ki vrača samo to vrednost in ne sproža nobenih učinkov. Torej potrebujemo operacijo, ki <span class="math notranslate nohighlight">\(\itp{A}\)</span> vloži v <span class="math notranslate nohighlight">\(T \itp{A}\)</span>.</p></li>
+<li><p>Če imamo program, ki vrača vrednosti tipa <span class="math notranslate nohighlight">\(A\)</span>, in še en program, ki vrača vrednosti tipa <span class="math notranslate nohighlight">\(B\)</span>, ju želimo izvesti enega za drugim. Pri tem je drugi program lahko odvisen od rezultata prvega. Torej potrebujemo operacijo, ki zna iz interpretacije v <span class="math notranslate nohighlight">\(T \itp{A}\)</span> in funkcije <span class="math notranslate nohighlight">\(\itp{A} \to T \itp{B}\)</span> sestaviti interpretacijo združenega programa v <span class="math notranslate nohighlight">\(T \itp{B}\)</span>.</p></li>
+</ul>
+<section id="definicija-monad">
+<h2>Definicija monad<a class="headerlink" href="#definicija-monad" title="Permalink to this heading">#</a></h2>
+<p>Tako strukturo opisujejo <em>monade</em>. Monada je podana s trojico <span class="math notranslate nohighlight">\((T, \eta, \bind)\)</span>, kjer je:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T\)</span> preslikava (funktor), ki vsaki množici <span class="math notranslate nohighlight">\(X\)</span> priredi množico <span class="math notranslate nohighlight">\(T X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> <em>enota</em>, ki je družina preslikav (naravna transformacija) <span class="math notranslate nohighlight">\(\eta_X : X \to T X\)</span> za poljubno množico <span class="math notranslate nohighlight">\(X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bind\)</span> <em>veriženje</em>, ki je družina preslikav (naravna transformacija) <span class="math notranslate nohighlight">\(\bind_{X, Y} : T X \to (X \to T Y) \to T Y\)</span> za poljubni množici <span class="math notranslate nohighlight">\(X\)</span> in <span class="math notranslate nohighlight">\(Y\)</span>,</p></li>
+</ul>
+<p>ki zadoščajo zakonom:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta(x) \bind_{X, Y} k = k(x)\)</span> za poljuben <span class="math notranslate nohighlight">\(x \in X\)</span> ter <span class="math notranslate nohighlight">\(k : X \to T Y\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(m \bind_{X, X} \eta_X = m\)</span> za poljuben <span class="math notranslate nohighlight">\(m \in T X\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\((m \bind_{X, Y} k) \bind_{Y, Z} k' = m \bind_{X, Z} (x \mapsto k(x) \bind_{Y, Z} k')\)</span> za poljuben <span class="math notranslate nohighlight">\(m \in T X\)</span>, <span class="math notranslate nohighlight">\(k : X \to T Y\)</span> in <span class="math notranslate nohighlight">\(k' : Y \to T Z\)</span>.</p></li>
+</ul>
+</section>
+<section id="primeri-monad">
+<h2>Primeri monad<a class="headerlink" href="#primeri-monad" title="Permalink to this heading">#</a></h2>
+<section id="trivialna-monada">
+<h3>Trivialna monada<a class="headerlink" href="#trivialna-monada" title="Permalink to this heading">#</a></h3>
+<p>Najenostavnejša monada je trivialna, ki predstavlja programe, ki ne sprožajo nobenih učinkov.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    T X &amp;= X \\
+    \eta_X(x) &amp;= x \\
+    m \bind_{X, Y} k &amp;= k(m)
+\end{align*}\end{split}\]</div>
+</section>
+<section id="izjeme">
+<h3>Izjeme<a class="headerlink" href="#izjeme" title="Permalink to this heading">#</a></h3>
+<p>Monado za izjeme iz množice <span class="math notranslate nohighlight">\(\mathbb{E}\)</span> podamo kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    T X &amp;= X + \mathbb{E} \\
+    \eta_X(x) &amp;= \iota_1(x) \\
+    m \bind_{X, Y} k &amp;= \begin{cases}
+        k(x) &amp; m = \iota_1(x) \\
+        \iota_2(e) &amp; m = \iota_2(e)
+    \end{cases}
+\end{align*}\end{split}\]</div>
+<p>Preverimo še veljavnost zakonov:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    \eta(x) \bind_{X, Y} k  &amp;= \iota_1(x) \bind_{X, Y} k = k(x) \\
+    m \bind_{X, Y} \eta_X(x) &amp;= \left(\begin{cases}
+        \iota_1(x) &amp; m = \iota_1(x) \\
+        \iota_2(e) &amp; m = \iota_2(e)
+    \end{cases}\right) = m \\
+    (m \bind k) \bind k' &amp;= \left(\begin{cases}
+        k(x) &amp; m = \iota_1(x) \\
+        \iota_2(e) &amp; m = \iota_2(e)
+    \end{cases}\right) \bind k' \\
+    &amp;= \begin{cases}
+        k(x) \bind k' &amp; m = \iota_1(x) \\
+        \iota_2(e) \bind k' &amp; m = \iota_2(e)
+    \end{cases} \\
+    &amp;= \begin{cases}
+        k(x) \bind k' &amp; m = \iota_1(x) \\
+        \iota_2(e) &amp; m = \iota_2(e)
+    \end{cases} \\
+    &amp;= m \bind (x \mapsto k(x) \bind k')
+\end{align*}\end{split}\]</div>
+<p>Za interpretacijo sprožanja in lovljenja izjem potem potrebujemo še preslikavi</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    \mathrm{raise} &amp;: \mathbb{E} \to T X \\
+    \mathrm{raise}(e) &amp;= \iota_2(e) \\
+    \mathrm{handle} &amp;: T X \times (\mathbb{E} \to T X) \to T X \\
+    \mathrm{handle}(m, h) &amp;= \left(\begin{cases}
+        \iota_1(x) &amp; m = \iota_1(x) \\
+        h(e) &amp; m = \iota_2(e)
+    \end{cases}\right)
+\end{align*}\end{split}\]</div>
+</section>
+<section id="pomnilnik">
+<h3>Pomnilnik<a class="headerlink" href="#pomnilnik" title="Permalink to this heading">#</a></h3>
+<p>Monado za delo s pomnilnikom nad množico stanj <span class="math notranslate nohighlight">\(S\)</span> podamo kot:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    T X &amp;= (X \times S)^S \\
+    \eta_X(x) &amp;= (s \mapsto (x, s)) \\
+    m \bind_{X, Y} k &amp;= (s \mapsto k(\underbrace{\pi_1(m(s))}_x)(\underbrace{\pi_2(m(s))}_{s'}))
+\end{align*}\end{split}\]</div>
+<p>Veriženje deluje tako, da <span class="math notranslate nohighlight">\(m : S \to (X \times S)\)</span> uporabi na začetnem stanju <span class="math notranslate nohighlight">\(s \in S\)</span> in dobi vrednost <span class="math notranslate nohighlight">\(x = \pi_1(m(s)) \in X\)</span> ter novo stanje <span class="math notranslate nohighlight">\(s' = \pi_2(m(s)) \in S\)</span>. Nato <span class="math notranslate nohighlight">\(k : X \mapsto (Y \times S)^S\)</span> uporabi na <span class="math notranslate nohighlight">\(x\)</span>, da dobi <span class="math notranslate nohighlight">\(k(x) : S \to (Y \times S)\)</span>, ki ga uporabi še na <span class="math notranslate nohighlight">\(s'\)</span>, da dobi končni rezultat <span class="math notranslate nohighlight">\(k(x)(s') : Y \times S\)</span>.</p>
+<p>Preverimo še veljavnost zakonov::</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    (\eta(x) \bind_{X, Y} k)
+        &amp;= (s \mapsto k(\pi_1(\eta(x)(s)))(\pi_2(\eta(x)(s)))) \\
+        &amp;= (s \mapsto k(\pi_1((x, s)))(\pi_2((x, s)))) \\
+        &amp;= (s \mapsto k(x)(s)) \\
+        &amp;= k(x) \\
+    m \bind_{X, Y} \eta(x)
+        &amp;= (s \mapsto \eta(\pi_1(m(s)))(\pi_2(m(s)))) \\
+        &amp;= (s \mapsto (\pi_1(m(s)), \pi_2(m(s)))) \\
+        &amp;= (s \mapsto m(s)) \\
+        &amp;= m \\
+    (m \bind k) \bind k'
+        &amp;= (s \mapsto k(\pi_1(m(s)))(\pi_2(m(s)))) \bind k' \\
+        &amp;= (s \mapsto k'(\pi_1(k(\pi_1(m(s)))(\pi_2(m(s)))))(\pi_2(k(\pi_1(m(s)))(\pi_2(m(s)))))) \\
+        &amp;= m \bind (x \mapsto (s \mapsto k'(\pi_1(k(x)(s)))(\pi_2(k(x)(s))))) \\
+        &amp;= m \bind (x \mapsto k(x) \bind k')
+\end{align*}\end{split}\]</div>
+<p>Za interpretacijo branja in pisanja potrebujemo še preslikavi</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+    \mathrm{lookup} &amp;: L \to T \mathbb{Z} \\
+    \mathrm{lookup}(\ell) &amp; s \mapsto (s(\ell), s) \\
+    \mathrm{update} &amp;: L \times \mathbb{Z} \to 1 \\
+    \mathrm{update}(\ell, n) &amp;= s \mapsto ((), s[\ell \mapsto n])
+\end{align*}\end{split}\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08-racunski-ucinki.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Računski učinki</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicija-monad">Definicija monad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primeri-monad">Primeri monad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trivialna-monada">Trivialna monada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#izjeme">Izjeme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pomnilnik">Pomnilnik</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Matija Pretnar
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
