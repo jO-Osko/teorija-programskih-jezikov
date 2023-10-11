@@ -12,6 +12,8 @@ let bexp_label = function
   | Equal _ -> "="
   | Less _ -> "<"
   | Greater _ -> ">"
+  | And _ -> "&&"
+  | Or _ -> "||"
 
 let cmd_label = function
   | Syntax.Assign _ -> ":="
@@ -20,6 +22,9 @@ let cmd_label = function
   | Skip -> "SKIP"
   | WhileDo _ -> "WHILE"
   | PrintInt _ -> "PRINT"
+  | Switch _ -> "SWITCH"
+  | Fail -> "FAIL"
+  | ForLoop _ -> "FOR"
 
 let node_name ind = Printf.sprintf "node%d" ind
 
@@ -44,7 +49,7 @@ let rec tree_exp ind exp =
   let all = node_str "oval" name (exp_label exp) :: all in
   (ind, name, all)
 
-let tree_bexp ind bexp =
+let rec tree_bexp ind bexp =
   let name = node_name ind in
   let ind = ind + 1 in
   let ind, direct, all =
@@ -53,6 +58,10 @@ let tree_bexp ind bexp =
     | Equal (l, r) | Less (l, r) | Greater (l, r) ->
         let ind, l, la = tree_exp ind l in
         let ind, r, ra = tree_exp ind r in
+        (ind, [ l; r ], la @ ra)
+    | And (l, r) | Or (l, r) ->
+        let ind, l, la = tree_bexp ind l in
+        let ind, r, ra = tree_bexp ind r in
         (ind, [ l; r ], la @ ra)
   in
   let all = List.map (connect name) direct @ all in
@@ -85,6 +94,17 @@ let rec tree_cmd ind cmd =
         let ind, l, a = tree_exp ind e in
         (ind, [ l ], a)
     | Skip -> (ind, [], [])
+    | Switch (l1, l2) ->
+        let ind, l1, la = tree_exp ind (Lookup l1) in
+        let ind, l2, lb = tree_exp ind (Lookup l2) in
+        (ind, [ l1; l2 ], la @ lb)
+    | Fail -> (ind, [], [])
+    | ForLoop (l, f, t, c) ->
+        let ind, l, la = tree_exp ind (Lookup l) in
+        let ind, f, fa = tree_exp ind f in
+        let ind, t, ta = tree_exp ind t in
+        let ind, c, ca = tree_cmd ind c in
+        (ind, [ l; f; t; c ], la @ fa @ ta @ ca)
   in
   let all = List.map (connect name) direct @ all in
   let all = node_str "diamond" name (cmd_label cmd) :: all in
@@ -93,3 +113,5 @@ let rec tree_cmd ind cmd =
 let ast_string cmd =
   let _, _, all = tree_cmd 0 cmd in
   Printf.sprintf "digraph G {\n  %s\n}\n" (String.concat "\n  " all)
+
+let rec sum_upto n = if n = 0 then 0 else n + sum_upto (n - 1)

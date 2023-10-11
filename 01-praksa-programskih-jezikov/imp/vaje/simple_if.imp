@@ -1,0 +1,4 @@
+if #x = 2 then 
+  #x := 3
+else
+  skip

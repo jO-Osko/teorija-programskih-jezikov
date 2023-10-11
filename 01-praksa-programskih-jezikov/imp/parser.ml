@@ -111,29 +111,58 @@ let rec cmd chrs =
     spaces1 >> word "then" >> spaces1 >> cmd >>= fun c1 ->
     spaces1 >> word "else" >> spaces1 >> atomic_cmd >>= fun c2 ->
     return (Syntax.IfThenElse (b, c1, c2))
+  and if_simple =
+    word "if" >> spaces1 >> bexp >>= fun b ->
+    spaces1 >> word "then" >> spaces1 >> cmd >>= fun c1 ->
+    return (Syntax.IfThenElse (b, c1, Syntax.Skip))
   and while_do =
     word "while" >> spaces1 >> bexp >>= fun b ->
     spaces1 >> word "do" >> spaces1 >> atomic_cmd >>= fun c ->
     return (Syntax.WhileDo (b, c))
+  and for_loop =
+    word "for" >> spaces1 >> location >>= fun l ->
+    spaces1 >> word ":=" >> spaces1 >> exp >>= fun e1 ->
+    spaces1 >> word "to" >> spaces1 >> exp >>= fun e2 ->
+    spaces1 >> word "do" >> spaces1 >> atomic_cmd >>= fun c ->
+    return (Syntax.ForLoop (l, e1, e2, c))
   and seq =
     atomic_cmd >>= fun c1 ->
     spaces >> word ";" >> spaces >> cmd >>= fun c2 ->
     return (Syntax.Seq (c1, c2))
   in
-  one_of [ if_then_else; while_do; seq; atomic_cmd ] chrs
+  one_of [ if_then_else; if_simple; while_do; seq; for_loop; atomic_cmd ] chrs
 
 and atomic_cmd chrs =
   let assign =
     location >>= fun l ->
     spaces >> word ":=" >> spaces >> exp >>= fun e ->
     return (Syntax.Assign (l, e))
+  and switch =
+    word "switch" >> spaces1 >> location >>= fun l1 ->
+    spaces1 >> location >>= fun l2 -> return (Syntax.Switch (l1, l2))
   and skip = word "skip" >> return Syntax.Skip
+  and fail = word "fail" >> return Syntax.Fail
   and print_int =
     word "print" >> spaces1 >> exp >>= fun e -> return (Syntax.PrintInt e)
   in
-  one_of [ assign; skip; print_int; parens cmd ] chrs
+  one_of [ assign; skip; fail; switch; print_int; parens cmd ] chrs
 
 let parse str =
   match str |> String.trim |> explode |> cmd with
   | Some (v, []) -> v
   | Some (_, _ :: _) | None -> failwith "Parsing error"
+
+(*
+     
+  
+  #n := 10;
+#fact := 1;
+(for #i := 1 to #n + 1 do (
+    #fact := #fact * #i
+));
+#a := 1;
+#b := 2;
+switch #a #b;
+print #fact
+  
+  *)

@@ -1,0 +1,6 @@
+#n := 10;
+#fact := 1;
+(for #i := 1 to #n + 1 do (
+    #fact := #fact * #i
+));
+print #fact
